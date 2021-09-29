@@ -274,7 +274,7 @@ mark {
 }
 
 .bg-color {
-    background-image: linear-gradient(to right, #bf30ac 0%, #0f9d58 100%);
+    background-image: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%);
     opacity: 0.7;
 }
 
@@ -475,10 +475,10 @@ header .go-back i {
     height: 40vh !important;
 }
 
-.bg-cover:after {
+/*.bg-cover:after {
     -webkit-animation: rainbow 0s infinite;
     animation: rainbow 0s infinite;
-}
+}*/
 
 .bg-cover:before, .bg-cover:after {
     position: absolute;
@@ -1916,3 +1916,4 @@ footer .copy-right {
     /* bg color = bg color under block */
     background: white;
 }
+

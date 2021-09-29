@@ -66,8 +66,12 @@
         })();
     </script>
 
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -79,7 +83,7 @@
                 <a href="/" class="waves-effect waves-light">
                     
                     <span class="logo-span">Ash</span>
-                </a>
+	</a>
             </div>
             
 
@@ -154,7 +158,7 @@
         <div class="logo-name">Ash</div>
         <div class="logo-desc">
             
-            一步一个脚印
+            Never really desperate, only the lost of the soul.
             
         </div>
     </div>
@@ -241,11 +245,30 @@
                     归档
                 
             </div>
-
+ <div class="description center-align">
+     
+         <span id="subtitle"></span>
+         <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
+        <script>
+            var typed = new Typed("#subtitle", {
+                strings: ['张岩大傻逼',
+                          '他就是个大傻逼',
+                          '',
+                          '',
+                          '',
+                          ''],
+                 startDelay: 300,
+                 typeSpeed: 130,
+                 loop: true,  
+                 backSpeed: 80,
+                 showCursor: true
+              });
+          </script>
+      
+</div>
             <div class="description center-align">
                 
-                    一步一个脚印
-                    <!-- <span id="jinrishici-sentence">正在加载今日诗词...</span> -->
+                    This is your root _config.yml 'description' value.
                 
             </div>
         </div>
@@ -255,6 +278,7 @@
 // 每天切换 banner 图.  Switch banner image every day.
 $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay() + '.jpg)');
 </script>
+
     </div>
 </div>
 
@@ -377,7 +401,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                             <div class="card-image">
                                 
                                 
-                                <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="测试">
+                                <img src="/medias/featureimages/24.jpg" class="responsive-img" alt="测试">
                                 
                                 <span class="card-title">测试</span>
                             </div>
@@ -431,7 +455,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                             <div class="card-image">
                                 
                                 
-                                <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Hello World">
+                                <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Hello World">
                                 
                                 <span class="card-title">Hello World</span>
                             </div>
@@ -488,7 +512,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                             <div class="card-image">
                                 
                                 
-                                <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="张岩大傻逼">
+                                <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="张岩大傻逼">
                                 
                                 <span class="card-title">张岩大傻逼</span>
                             </div>
@@ -705,8 +729,17 @@ $(function () {
     
 
     <!-- 雪花特效 -->
-    
-
+    <script type="text/javascript">
+    //只在桌面版网页启用特效
+    var windowWidth = $(window).width();
+    if (windowWidth > 768) {
+    document.write('<script type="text/javascript" src="/js/sakura.js"><\/script>');
+}
+</script>
+    <!--动态线条背景-->
+    <script type="text/javascript"
+     color="122 103 238" opacity='0.7' zIndex="-2" count="200"      src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
+    </script>
 </body>
 
 </html>
