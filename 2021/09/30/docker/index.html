@@ -4,11 +4,18 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, Ash up up">
+    <meta name="keywords" content="docker创建weblogic的方式, Ash up up">
     <meta name="baidu-site-verification" content="fmlEuI34ir">
     <meta name="google-site-verification" content="yCy2azpds5XSuGZvis6OuA-XIGF5GuGpYRAaGfD6o48">
     <meta name="360-site-verification" content="b7c11a830ef90fd1464ad6206bb7b6e7">
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex">
+    <meta name="description" content="Docker-Weblogic 10.3.6
+基础环境准备
+安装weblogic
+生成weblogic基础镜像
+编制 Dockerfile 定制镜像
+
+基础环境准备1. 拉取并保存centos镜像
+$ sudo docker pull ce">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +23,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Hello World | Ash</title>
+    <title>docker创建weblogic的方式 | Ash</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -506,13 +513,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Hello World
+                        docker创建weblogic的方式
                     </div>
                 </div>
             </div>
@@ -626,11 +633,24 @@
                 <div class="col s7">
                     
                     <div class="article-tag">
-                        <span class="chip bg-color">无标签</span>
+                        
+                        <a href="/tags/环境搭建/" target="_blank">
+                            <span class="chip bg-color">环境搭建</span>
+                        </a>
+                        
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                        <a href="/categories/环境搭建/" class="post-category" target="_blank">
+                            环境搭建
+                        </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -638,7 +658,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-09-27
+                    2021-09-30
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -652,14 +672,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    73
+                    928
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    4 分
                 </div>
                 
                 
@@ -670,16 +690,137 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class="line-numbers language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class="line-numbers language-bash"><code class="language-bash">$ hexo server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class="line-numbers language-bash"><code class="language-bash">$ hexo generate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class="line-numbers language-bash"><code class="language-bash">$ hexo deploy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+                <h1 id="Docker-Weblogic-10-3-6"><a href="#Docker-Weblogic-10-3-6" class="headerlink" title="Docker-Weblogic 10.3.6"></a>Docker-Weblogic 10.3.6</h1><ul>
+<li>基础环境准备</li>
+<li>安装weblogic</li>
+<li>生成weblogic基础镜像</li>
+<li>编制 Dockerfile 定制镜像</li>
+</ul>
+<h2 id="基础环境准备"><a href="#基础环境准备" class="headerlink" title="基础环境准备"></a>基础环境准备</h2><p><strong>1. 拉取并保存centos镜像</strong></p>
+<pre><code>$ sudo docker pull centos
+$ sudo docker save -o centos-7.2.tar centos:latest</code></pre><p><strong>2. 下载jdk rpm包</strong><br><a href="https://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase7-521261.html#jdk-7u80-oth-JPR" target="_blank" rel="noopener">rpm:jdk-7u80-64bit</a> </p>
+<p><strong>3. 下载weblogic的zip版安装包</strong><br><a href="https://www.oracle.com/technetwork/middleware/weblogic/downloads/wls-for-dev-1703574.html" target="_blank" rel="noopener">ZIP: weblogic-10.3.6-develop-zip</a> </p>
+<p><strong>4. 安装包准备</strong></p>
+<pre><code># 新建文件夹 CVE-Docker
+$ mkdir CVE-Docker
 
+# 将weblogic安装包及jdk安装包拷贝至 CVE-Docker
+$ cp *.* /home/tim/CVE-Docker
+
+# 解压wls1036_dev.zip,解压后的顶层文件目录是wls10360
+$ sudo unzip wls1036_dev.zip -d wls10360</code></pre><p><strong>5. 导入centos基础镜像</strong></p>
+<pre><code>$ sudo docker load -i centos-7.2.tar</code></pre><h2 id="安装weblogic"><a href="#安装weblogic" class="headerlink" title="安装weblogic"></a>安装weblogic</h2><pre><code># step1 运行基础centos容器,把安装包目录映射到容器的home目录中
+$ sudo docker run -itd -P -v /home/tim/CVE-Docker:/tmp --name "install_weblogic" centos:latest /bin/bash
+
+# step2 进入容器
+$ sudo docker exec -it install_weblogic /bin/bash
+
+# step3 设置root口令
+[root@d5896162f9fe /]# passwd root
+root
+root
+
+# step4 创建weblogic用户
+[root@d5896162f9fe home]# useradd weblogic -p weblogic123
+
+# step5 安装jdk
+[root@d5896162f9fe home]# cd /tmp
+[root@d5896162f9fe home]# rpm -ivh jdk-7u80-linux-x64.rpm
+
+# step6 寻找jdk安装目录，并复制
+[root@d5896162f9fe jdk1.7.0_80]# find / -name "*jdk*"
+
+# step7 设置weblogic安装目录
+[root@d5896162f9fe jdk1.7.0_80]# mkdir -p /opt/Oracle/weblogic/wls10360
+
+
+# step8 设置环境变量，在profile尾部添加如下配置
+[root@d5896162f9fe jdk1.7.0_80]# vi /etc/profile
+
+export JAVA_HOME=/usr/java/jdk1.7.0_80
+export PATH=$JAVA_HOME/bin:$PATH
+export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+export MW_HOME=/opt/Oracle/weblogic/wls10360
+
+# step9 使环境变量生效
+[root@d5896162f9fe jdk1.7.0_80]# source /etc/profile
+
+# step10  将weblogic安装包文件拷贝至安装目录
+[root@d5896162f9fe wls10360]# cd /tmp/wls10360
+[root@d5896162f9fe wls10360]# cp -R ./* /opt/Oracle/weblogic/wls10360/
+
+# step11 将weblogic安装目录及文件所有者修改为weblogic用户
+[root@d5896162f9fe weblogic]# cd /opt
+[root@d5896162f9fe opt]# chown -R weblogic:weblogic Oracle/
+
+# step12 切换至weblogic用户
+[root@d5896162f9fe wls10360]# su - weblogic
+
+# step12 检查当前环境是否符合weblogic安裝要求
+[weblogic@d5896162f9fe ~]$ cd /opt/Oracle/weblogic/wls10360/
+[weblogic@d5896162f9fe wls10360]$ ./configure.sh
+
+# step13 配置weblogic初始化参数
+[weblogic@d5896162f9fe wls10360]$ wlserver/server/bin/setWLSEnv.sh
+
+#step14 创建weblogic域(domain)
+[weblogic@d5896162f9fe wls10360]$ wlserver/common/bin/config.sh
+
+#step15 选1,创建新域
+#step16 选1, 选择WebLogic平台组件 
+#step17 默认回车, Basic WebLogic Server Domain - 10.3.6.0 [wlserver]
+#step18 默认回车,使用base_domain作为域名
+#step19 默认鬼扯,使用/opt/Oracle/weblogic/wls10360/user_projects/domains作为域的安装路径
+#step20 选1,设置登录管理员用户名,设置为weblogic回车
+#step21 选2,设置登录管理员用户口令,设置为weblogic123回车
+#step22 选3,确认登录管理员用户口令,输入weblogic123回车
+#step23 回车进入下一步,选择1,开发环境
+#step24 选1,选择我们安装的jdk作为java环境
+#step25 选1,因为我们只安装单节点,所以选1,如果要部署集群则选择2
+#step26 默认回车,确认weblogic 管理服务信息，回车进行确认
+
+# step27 启动weblogic,测试安装成效
+[weblogic@d5896162f9fe wls10360]$ user_projects/domains/base_domain/startWebLogic.sh
+
+#step28 切换到root用户,安装net-tools软件包,查看服务
+[root@d5896162f9fe /]# yum install net-tools
+[root@d5896162f9fe /]# netstat -ntlp
+[root@d5896162f9fe /]# curl http://127.0.0.1:7001/console</code></pre><h2 id="生成weblogic基础镜像"><a href="#生成weblogic基础镜像" class="headerlink" title="生成weblogic基础镜像"></a>生成weblogic基础镜像</h2><p><strong>1. 生成weblogic基础镜像</strong></p>
+<pre><code>$ sudo docker commit install_weblogic weblogic:10.3.6</code></pre><h2 id="编制-Dockerfile-定制镜像"><a href="#编制-Dockerfile-定制镜像" class="headerlink" title="编制 Dockerfile 定制镜像"></a>编制 Dockerfile 定制镜像</h2><p><strong>1. 编制Dockerfile文件</strong></p>
+<pre><code># Version 1.0
+
+# base image
+FROM weblogic:10.3.6
+
+# Author informations
+MAINTAINER 779602274@qq.com
+
+# 将启动后的目录切换到 /home/weblogic目录
+WORKDIR  /home/weblogic
+
+# Add the locate file to container
+ADD start.sh /home/weblogic
+
+# 使用root用户来执行后续命令
+USER root
+
+# Running some commonds
+RUN source /etc/profile
+RUN chown weblogic:weblogic /home/weblogic/start.sh
+RUN chmod +x /home/weblogic/start.sh
+
+# 使用weblogic用户来执行后续命令
+USER weblogic
+
+# Expose the port 7001
+EXPOSE 7001
+
+# The commond running after container started
+CMD ["/home/weblogic/start.sh"]</code></pre><p><strong>2.编制附加文件start.sh</strong></p>
+<pre><code>#!/bin/bash
+source /etc/profile
+/opt/Oracle/weblogic/wls10360/user_projects/domains/base_domain/startWebLogic.sh</code></pre><p><strong>3.制作最终镜像</strong></p>
+<pre><code>$ sudo docker build -t weblogic:10.3.6 .</code></pre>
             </div>
             <hr />
 
@@ -717,7 +858,7 @@
         repo: 'ashupup.github.io',
         owner: 'ashupup',
         admin: "ashupup",
-        id: '2021/09/27/hello-world/',
+        id: '2021/09/30/docker/',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -1000,9 +1141,67 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2021/09/30/docker/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="docker创建weblogic的方式">
+                        
+                        <span class="card-title">docker创建weblogic的方式</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Docker-Weblogic 10.3.6
+基础环境准备
+安装weblogic
+生成weblogic基础镜像
+编制 Dockerfile 定制镜像
+
+基础环境准备1. 拉取并保存centos镜像
+$ sudo docker pull ce
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-09-30
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/环境搭建/" class="post-category" target="_blank">
+                                    环境搭建
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/环境搭建/" target="_blank">
+                        <span class="chip bg-color">环境搭建</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2021/09/28/article-title/">
                     <div class="card-image">
@@ -1021,9 +1220,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2021-09-28
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-09-28
+                            </span>
                         <span class="publish-author">
                             
                         </span>
@@ -1034,56 +1233,6 @@
                     
                     <a href="/tags/over/" target="_blank">
                         <span class="chip bg-color">over</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/01/14/5w2h-godweiyang/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="张岩大傻逼">
-                        
-                        <span class="card-title">张岩大傻逼</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            111111
-
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-14
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/随笔/" class="post-category" target="_blank">
-                                    随笔
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/博客/" target="_blank">
-                        <span class="chip bg-color">博客</span>
                     </a>
                     
                 </div>
@@ -1192,6 +1341,25 @@
     
 
 </main>
+
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
+
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+<!-- 代码语言 -->
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+<!-- 代码块复制 -->
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+<script type="text/javascript" src="/libs/codeBlock/clipboard.min.js"></script>
+<!-- 代码块收缩 -->
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script> 
+<!-- 代码块折行 -->
+<style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style>
 
 
     <footer class="page-footer bg-color">
