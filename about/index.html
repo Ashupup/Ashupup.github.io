@@ -554,11 +554,8 @@
         </div>
     </div>
 </div>
-
 <script>
-    // 每天切换 banner 图.  Switch banner image every day.
-    var bannerUrl = "/medias/banner/" + new Date().getDay() + '.jpg';
-    $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
+    $('.bg-cover').css('background-image', 'url(/medias/banner/0.jpg)');
 </script>
 
     </div>
@@ -580,14 +577,14 @@
 
 
 <div class="statis">
-    <span class="count"><a href="/categories" target="_blank">4</a></span>
+    <span class="count"><a href="/categories" target="_blank">3</a></span>
     <span class="name">分类</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/tags" target="_blank">4</a></span>
+    <span class="count"><a href="/tags" target="_blank">3</a></span>
     <span class="name">标签</span>
 </div>
 
@@ -609,14 +606,14 @@
 
 
 <div class="statis">
-    <span class="count"><a href="/categories" target="_blank">4</a></span>
+    <span class="count"><a href="/categories" target="_blank">3</a></span>
     <span class="name">分类</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/tags" target="_blank">4</a></span>
+    <span class="count"><a href="/tags" target="_blank">3</a></span>
     <span class="name">标签</span>
 </div>
 
@@ -775,7 +772,7 @@
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":":内网靶场","value":0},{"name":"环境搭建","value":1},{"name":"WAF绕过","value":1},{"name":"web安全","value":1}],
+                data: [{"name":"环境搭建","value":1},{"name":"web安全","value":1},{"name":"WAF绕过","value":1}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -799,7 +796,7 @@
         xAxis: [
             {
                 type: 'category',
-                data: ["环境搭建","WAF绕过","web安全","内网靶场"]
+                data: ["环境搭建","web安全","WAF绕过"]
             }
         ],
         yAxis: [
@@ -812,7 +809,7 @@
                 type: 'bar',
                 color: ['#82d3f4'],
                 barWidth : 18,
-                data: [1,1,1,0],
+                data: [1,1,1],
                 markPoint: {
                     symbolSize: 45,
                     data: [{
@@ -846,22 +843,6 @@
                 
 
                 
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-content">
-                <div class="card-content article-card-content">
-                        <div class="title center-align" data-aos="zoom-in-up">
-                            <i class="fa fa-address-book"></i>&nbsp;&nbsp;我的简历
-                        </div>
-                        <div id="articleContent" data-aos="fade-up">
-                            <p>成为某个领域的专家，需要 10000个小时。</p>
-<p>按比例计算就是：如果每天工作 8 个小时，一周工作 5 天，</p>
-<p>那么成为一个领域的专家至少需要 5 年，</p>
-<p>这就是一万小时定律。</p>
-
-                        </div>
-                </div>
             </div>
         </div>
     </div>
@@ -1022,12 +1003,12 @@ $(function () {
     <script type="text/javascript"
      color="122 103 238" opacity='0.7' zIndex="-2" count="200"      src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
     </script>
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"live2d-widget-model-shizuku"},"display":{"position":"left","width":200,"height":400},"mobile":{"show":false},"react":{"opacity":0.7}});</script><script>
+<script>
             window.imageLazyLoadSetting = {
                 isSPA: false,
                 preloadRatio: 1,
                 processImages: null,
             };
-        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=i;var e=n.imageLazyLoadSetting.isSPA,r=(n.imageLazyLoadSetting.preloadRatio,Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));function i(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight+360||document.documentElement.clientHeight+360)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}i(),n.addEventListener("scroll",function(){var t,e;t=i,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=i;var e=n.imageLazyLoadSetting.isSPA,r=(n.imageLazyLoadSetting.preloadRatio,Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));function i(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight+360||document.documentElement.clientHeight+360)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}i(),n.addEventListener("scroll",function(){var t,e;t=i,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"live2d-widget-model-shizuku"},"display":{"position":"left","width":200,"height":400},"mobile":{"show":false},"react":{"opacity":0.7}});</script></body>
 
 </html>
