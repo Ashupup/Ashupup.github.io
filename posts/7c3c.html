@@ -670,14 +670,14 @@ SSPI">
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.8k
+                    3.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    13 分
+                    14 分
                 </div>
                 
                 
@@ -887,6 +887,18 @@ administrator:500:LM hash:NTLM hash:::</code></pre><p>在windows2000以后的系
 <p>4.服务器收到了客户端发送的type3认证消息后，取出其中的Net NTLM-hash的值，并通过Netlogon协议向DC域控发送针对客户端的验证请求。该请求主要包含以下三方面的内容：客户端用户名、原始的Challenge 和 加密后的Challenge(也就是Net NTLM-Hash）</p>
 <p>5.然后DC就会拿出自己的存储的NTLM hash对challenge加密得到Net NTLM-hash，并且跟服务器所发的进行对比，，如果一致，则用户拥有正确的密码，验证通过，否则验证失败。并将验证结果发给服务器。</p>
 <p>6.然后服务器根据DC发送的结果，并给客户端回答</p>
+<p>相关的安全问题</p>
+<p>1.哈希传递攻击（PTH）</p>
+<p>2.利用ntlm进行的信息收集</p>
+<p>在相应type2中，我们可以看看抓的包</p>
+<p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211015151808281.png" alt="image-20211015151808281"></p>
+<p>同时返回了操作系统类型，主机名，netbios名等等。这也就意味着如果我们在能跟服务器进行ntlm 交流中，给服务器发送一个type1的请求，服务器返回type2的响应，这一步，我们就可以得到很多信息</p>
+<p>通过工具smb_version,或者msf中的模块auxiliary/scanner/smb/smb_version</p>
+<p>3.NTLM Relay</p>
+<p>参考链接：</p>
+<p><a href="https://www.anquanke.com/post/id/193149?from=timeline#h2-1" target="_blank" rel="noopener">https://www.anquanke.com/post/id/193149?from=timeline#h2-1</a></p>
+<p><a href="https://xie1997.blog.csdn.net/article/details/85941222" target="_blank" rel="noopener">https://xie1997.blog.csdn.net/article/details/85941222</a></p>
+<p><a href="https://3gstudent.github.io/Windows下的密码hash-NTLM-hash和Net-NTLM-hash介绍" target="_blank" rel="noopener">https://3gstudent.github.io/Windows%E4%B8%8B%E7%9A%84%E5%AF%86%E7%A0%81hash-NTLM-hash%E5%92%8CNet-NTLM-hash%E4%BB%8B%E7%BB%8D</a></p>
 
             </div>
             <hr />
@@ -1516,7 +1528,7 @@ SSPI
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">17k</span>
+            <span class="white-color">17.2k</span>
             
 
             <br>
