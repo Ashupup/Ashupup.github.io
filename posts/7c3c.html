@@ -887,8 +887,7 @@ administrator:500:LM hash:NTLM hash:::</code></pre><p>在windows2000以后的系
 <p>4.服务器收到了客户端发送的type3认证消息后，取出其中的Net NTLM-hash的值，并通过Netlogon协议向DC域控发送针对客户端的验证请求。该请求主要包含以下三方面的内容：客户端用户名、原始的Challenge 和 加密后的Challenge(也就是Net NTLM-Hash）</p>
 <p>5.然后DC就会拿出自己的存储的NTLM hash对challenge加密得到Net NTLM-hash，并且跟服务器所发的进行对比，，如果一致，则用户拥有正确的密码，验证通过，否则验证失败。并将验证结果发给服务器。</p>
 <p>6.然后服务器根据DC发送的结果，并给客户端回答</p>
-<p>相关的安全问题</p>
-<p>1.哈希传递攻击（PTH）</p>
+<h3 id="相关的安全问题"><a href="#相关的安全问题" class="headerlink" title="相关的安全问题"></a>相关的安全问题</h3><p>1.哈希传递攻击（PTH）</p>
 <p>2.利用ntlm进行的信息收集</p>
 <p>在相应type2中，我们可以看看抓的包</p>
 <p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211015151808281.png" alt="image-20211015151808281"></p>
@@ -1259,53 +1258,34 @@ administrator:500:LM hash:NTLM hash:::</code></pre><p>在windows2000以后的系
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/7c3c.html">
+                <a href="/posts/836f.html">
                     <div class="card-image">
                         
                         
-                        <img src="/images/loading.gif" data-original="/medias/featureimages/16.jpg" class="responsive-img" alt="NTLM和NTLM身份的认证">
+                        <img src="/images/loading.gif" data-original="/medias/featureimages/9.jpg" class="responsive-img" alt="域控安全">
                         
-                        <span class="card-title">NTLM和NTLM身份的认证</span>
+                        <span class="card-title">域控安全</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            NTLM和NTLM身份的认证前言：博客的所有文章只是自己学习的过程，参考各大佬的文章来学习，还有自己的理解，知识点比较浅，见谅。
-耽搁了好久，9月23号写到一半，然后就忙事去了，结果拖到现在，赶紧补回来。
-学习之前简单了解几个概念
-SSPI
+                            域控安全前言：博客的所有文章只是自己学习的过程，参考各大佬的文章来学习，还有自己的理解，知识点比较浅，见谅
+
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-10-14
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2021-10-15
+                        </span>
                         <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/内网渗透/" class="post-category" target="_blank">
-                                    内网渗透
-                                </a>
-                            
                             
                         </span>
                     </div>
-                </div>
-
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/内网渗透/" target="_blank">
-                        <span class="chip bg-color">内网渗透</span>
-                    </a>
-                    
                 </div>
                 
             </div>
@@ -1528,7 +1508,7 @@ SSPI
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">17.2k</span>
+            <span class="white-color">17.3k</span>
             
 
             <br>
