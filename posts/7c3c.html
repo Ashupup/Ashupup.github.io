@@ -199,10 +199,10 @@ SSPI">
     };
     loaded();
 })()
- </script>
+ </script><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><style type="text/css" lang="css">
+<style type="text/css" lang="css">
     #loading-container{
         position: fixed;
         top: 0;
@@ -511,7 +511,7 @@ SSPI">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -670,7 +670,7 @@ SSPI">
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.9k
+                    4k
                 </div>
                 
 
@@ -746,14 +746,14 @@ administrator:500:LM hash:NTLM hash:::</code></pre><p>在windows2000以后的系
 <pre class="line-numbers language-php"><code class="language-php"><span class="token number">1</span><span class="token punctuation">.</span>首先将密码转换成大写，然后再十六进制转换，明文口令不足<span class="token number">14</span>字节的情况下，后面添加<span class="token number">0</span>补足<span class="token number">14</span>字节（一个字节＝<span class="token number">2</span>个<span class="token number">16</span>进制字符，一个<span class="token number">16</span>进制位＝<span class="token number">0.5</span>个字节）
 <span class="token constant">WELCOME</span><span class="token operator">--</span>》<span class="token constant">57454C434F4D45</span> <span class="token number">00000000000000</span>  所以这里是十六进制是<span class="token number">7</span>个字节，加上后面的<span class="token number">0</span>就是<span class="token number">14</span>字节
 <span class="token number">2</span><span class="token punctuation">.</span>密码的<span class="token number">16</span>进制字符串被分成两个<span class="token number">7</span>字节部分。将<span class="token number">7</span>字节转换成7bit，每7bit后面添<span class="token number">0</span>补足<span class="token number">8</span>位
-<span class="token constant">57454C434F4D45</span> <span class="token operator">-</span><span class="token function">str_to_key</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span> <span class="token constant">56A25288347A348A</span>
-<span class="token number">00000000000000</span> <span class="token operator">-</span><span class="token function">str_to_key</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span> <span class="token number">0000000000000000</span>
+<span class="token constant">57454C434F4D45</span> <span class="token operator">-</span><span class="token function">str_to_key</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token constant">56A25288347A348A</span>
+<span class="token number">00000000000000</span> <span class="token operator">-</span><span class="token function">str_to_key</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token number">0000000000000000</span>
 <span class="token number">3</span><span class="token punctuation">.</span>这两组<span class="token number">8</span>字节数据将做为<span class="token constant">DESKEY</span>对魔术字符串”<span class="token constant">KGS</span><span class="token operator">!</span>@<span class="token shell-comment comment">#$%”进行标准DES加密</span>
 
-<span class="token string">"KGS!@#$%"</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token constant">4B47532140232425</span>
+<span class="token string">"KGS!@#$%"</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token constant">4B47532140232425</span>
 
-<span class="token constant">56A25288347A348A</span> <span class="token operator">-</span>对<span class="token constant">4B47532140232425</span>进行标准<span class="token constant">DES</span>加密<span class="token operator">-</span><span class="token operator">></span> <span class="token constant">C23413A8A1E7665F</span>
-<span class="token number">0000000000000000</span> <span class="token operator">-</span>对<span class="token constant">4B47532140232425</span>进行标准<span class="token constant">DES</span>加密<span class="token operator">-</span><span class="token operator">></span> <span class="token constant">AAD3B435B51404EE</span>
+<span class="token constant">56A25288347A348A</span> <span class="token operator">-</span>对<span class="token constant">4B47532140232425</span>进行标准<span class="token constant">DES</span>加密<span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token constant">C23413A8A1E7665F</span>
+<span class="token number">0000000000000000</span> <span class="token operator">-</span>对<span class="token constant">4B47532140232425</span>进行标准<span class="token constant">DES</span>加密<span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token constant">AAD3B435B51404EE</span>
 <span class="token number">4</span><span class="token punctuation">.</span>最后两个拼接
 <span class="token constant">LM</span> Hash<span class="token punctuation">:</span> <span class="token constant">C23413A8A1E7665FAAD3B435B51404EE</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>缺点</strong></p>
@@ -1266,7 +1266,7 @@ administrator:500:LM hash:NTLM hash:::</code></pre><p>在windows2000以后的系
                     <div class="card-image">
                         
                         
-                        <img src="/images/loading.gif" data-original="/medias/featureimages/4.jpg" class="responsive-img" alt="域控安全">
+                        <img src="/images/loading.gif" data-original="/medias/featureimages/5.jpg" class="responsive-img" alt="域控安全">
                         
                         <span class="card-title">域控安全</span>
                     </div>
@@ -1316,7 +1316,7 @@ administrator:500:LM hash:NTLM hash:::</code></pre><p>在windows2000以后的系
                     <div class="card-image">
                         
                         
-                        <img src="/images/loading.gif" data-original="/medias/featureimages/7.jpg" class="responsive-img" alt="不死马php">
+                        <img src="/images/loading.gif" data-original="/medias/featureimages/8.jpg" class="responsive-img" alt="不死马php">
                         
                         <span class="card-title">不死马php</span>
                     </div>
@@ -1523,7 +1523,7 @@ administrator:500:LM hash:NTLM hash:::</code></pre><p>在windows2000以后的系
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">31.4k</span>
+            <span class="white-color">31.5k</span>
             
 
             <br>
