@@ -4,13 +4,14 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="隧道搭建frp, Ash up up">
+    <meta name="keywords" content="bypass403总结, Ash up up">
     <meta name="baidu-site-verification" content="fmlEuI34ir">
     <meta name="google-site-verification" content="yCy2azpds5XSuGZvis6OuA-XIGF5GuGpYRAaGfD6o48">
     <meta name="360-site-verification" content="b7c11a830ef90fd1464ad6206bb7b6e7">
-    <meta name="description" content="FRP
-frp 是一个可用于内网穿透的高性能的反向代理应用，支持TCP、UDP协议，为HTTP和HTTPS应用协议提供了额外的能力，且尝试性支持了点对点穿透
-FRP最大的一个特点是使用SOCKS代理，而SOCKS是加密通信的，类似于做了一个">
+    <meta name="description" content="bypass403对于日常渗透测试中，会经常目录扫描扫到一堆403，而对于200的状态码没有一些思路的时候就可以尝试bypass403
+一.扩展名绕过com/admin   403
+com/admin/  200
+com/admin//  ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +19,7 @@ FRP最大的一个特点是使用SOCKS代理，而SOCKS是加密通信的，类�
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>隧道搭建frp | Ash</title>
+    <title>bypass403总结 | Ash</title>
     <link rel="icon" type="image/png" href="/medias/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -510,13 +511,13 @@ FRP最大的一个特点是使用SOCKS代理，而SOCKS是加密通信的，类�
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/24.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        隧道搭建frp
+                        bypass403总结
                     </div>
                 </div>
             </div>
@@ -631,8 +632,8 @@ FRP最大的一个特点是使用SOCKS代理，而SOCKS是加密通信的，类�
                     
                     <div class="article-tag">
                         
-                        <a href="/tags/内网渗透/" target="_blank">
-                            <span class="chip bg-color">内网渗透</span>
+                        <a href="/tags/bypass/" target="_blank">
+                            <span class="chip bg-color">bypass</span>
                         </a>
                         
                     </div>
@@ -643,8 +644,8 @@ FRP最大的一个特点是使用SOCKS代理，而SOCKS是加密通信的，类�
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                        <a href="/categories/内网渗透/" class="post-category" target="_blank">
-                            内网渗透
+                        <a href="/categories/bypass/" class="post-category" target="_blank">
+                            bypass
                         </a>
                         
                     </div>
@@ -655,7 +656,7 @@ FRP最大的一个特点是使用SOCKS代理，而SOCKS是加密通信的，类�
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-10-22
+                    2021-10-27
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -669,14 +670,14 @@ FRP最大的一个特点是使用SOCKS代理，而SOCKS是加密通信的，类�
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.6k
+                    2.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    9 分
                 </div>
                 
                 
@@ -687,170 +688,207 @@ FRP最大的一个特点是使用SOCKS代理，而SOCKS是加密通信的，类�
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="FRP"><a href="#FRP" class="headerlink" title="FRP"></a>FRP</h1><blockquote>
-<p>frp 是一个可用于内网穿透的高性能的反向代理应用，支持TCP、UDP协议，为HTTP和HTTPS应用协议提供了额外的能力，且尝试性支持了点对点穿透</p>
-<p>FRP最大的一个特点是使用SOCKS代理，而SOCKS是加密通信的，类似于做了一个加密的隧道，可以把外网的流量，通过加密隧道穿透到内网。效果有些类似于VPN。</p>
-<p>frp的好处是利用内网或防火墙后的机器，对外网环境提供http或https服务。对于http和https服务支持基于域名的虚拟主机，支持自定义域名绑定，使多个域名可以共用一个80端口。利用处于内网或防火墙后的机器，对外网环境提供tcp和udp服务，例如在家里通过ssh或者web访问公司内网环境内的主机或者业务进行办</p>
-</blockquote>
-<p>下载地址</p>
+                <h1 id="bypass403"><a href="#bypass403" class="headerlink" title="bypass403"></a>bypass403</h1><p>对于日常渗透测试中，会经常目录扫描扫到一堆403，而对于200的状态码没有一些思路的时候就可以尝试bypass403</p>
+<h2 id="一-扩展名绕过"><a href="#一-扩展名绕过" class="headerlink" title="一.扩展名绕过"></a>一.扩展名绕过</h2><pre><code>com/admin   403
+com/admin/  200
+com/admin//  200
+com//admin//  200
+com/admin/*   200
+com/admin/*/  200
+com/admin/.   200
+com/admin/./    200
+com/./admin/./    200
+com/./admin/...  200
+com/admin/./.    200
+com/admin/./.    200
+com/admin?        200
+com/admin??        200
+com/admin???    200
+com/admin..;/    200
+com/admin/..;/    200
+com/%2f/admin    200
+com/%2e/admin    200
+com/admin%20/    200
+com/admin%09/    200
+com/%20admin%20/    200</code></pre><p>参考ascii表<a href="http://c.biancheng.net/c/ascii/" target="_blank" rel="noopener">http://c.biancheng.net/c/ascii/</a></p>
+<p>%2f 解码后是/   %2e 解码后是.   %20解码后可以说是网页的空格（像sql注入，xss当空格过滤可以尝试bypass）</p>
+<p>%09 解码后是水平制表符也就是tab键 </p>
+<p>但是我觉得像url编码这个问题可以用burp fuzz测试一下，看看哪些url编码可以绕过</p>
+<h2 id="二-通过代理绕过"><a href="#二-通过代理绕过" class="headerlink" title="二.通过代理绕过"></a>二.通过代理绕过</h2><p>在酒仙桥的文章中说了在Nginx代理识别访问端IP限制对接口的访问。那么先来看看什么是Nginx的代理识别访问端</p>
+<p>看这个Nginx的配置</p>
+<pre><code>server {
+        listen       80;
+        server_name ashupup.top; // 接口的域名
+        access_log  /usr/local/etc/nginx/logs/access.log main; //access_log访问日志
+
+        location / {
+                proxy_pass http://127.0.0.1:8080/;
+                proxy_redirect      off;
+
+                # 这里的匹配规则是从上往下，匹配到则会马上跳出，忽略后续的规则。
+                allow 192.168.100.0/30;#允许ip段，all为所有 这里允许访问的IP范围为：192.168.100.1～192.168.100.3
+                deny all; #禁用ip段，all为所有
+        }
+}</code></pre><p>proxy_pass指令是用来设置代理服务器的地址</p>
+<p>先看前面allow的意思。</p>
 <blockquote>
-<p><a href="https://github.com/fatedier/frp/releases/tag/v0.37.1" target="_blank" rel="noopener">https://github.com/fatedier/frp/releases/tag/v0.37.1</a></p>
+<p>server_name后面是我们定义的接口域名，但我们访问<a href="http://ashupup.top/xxxx这样的接口的时候，就会通过location反向代理到了http://127.0.0.1:8080/上面来了，也就是http://127.0.0.1:8080/xxxx" target="_blank" rel="noopener">http://ashupup.top/xxxx这样的接口的时候，就会通过location反向代理到了http://127.0.0.1:8080/上面来了，也就是http://127.0.0.1:8080/xxxx</a></p>
 </blockquote>
-<p>条件</p>
-<blockquote>
-<p>因为内网是没有公网ip地址，所以不能被外网访问到，也就是说内网可以访问外网，这是frp搭建的前提条件，因为端口映射过来必须内网是能够访问到vps上面去的。</p>
-<p>这种就跟Nginx的反向代理一样，通过内网端口映射到Nginx服务器上的端口，我们外网访问Nginx的端口访问内网资源</p>
-</blockquote>
-<p>环境搭建：</p>
-<blockquote>
-<p>外网：kali   192.168.1.132  </p>
-<p>vps：腾讯云 </p>
-<p>内网：win7 192.168.93.128 </p>
-</blockquote>
-<p>公网vps作为服务端，内网作为客户端。</p>
-<h2 id="一级代理"><a href="#一级代理" class="headerlink" title="一级代理"></a>一级代理</h2><h3 id="服务器配置"><a href="#服务器配置" class="headerlink" title="服务器配置"></a>服务器配置</h3><p>首先下载对应版本的frp</p>
-<pre><code>wget https://github.com/fatedier/frp/releases/download/v0.34.3/frp_0.34.3_linux_amd64.tar.gz
+<h3 id="简单来理解一下Nginx代理里面的四种情况"><a href="#简单来理解一下Nginx代理里面的四种情况" class="headerlink" title="简单来理解一下Nginx代理里面的四种情况"></a>简单来理解一下Nginx代理里面的四种情况</h3><h4 id="情况一"><a href="#情况一" class="headerlink" title="情况一"></a>情况一</h4><pre><code>location / {
+                proxy_pass http://127.0.0.1:8080/;  #配置1
+                proxy_pass http://127.0.0.1:8080;    #配置2
+                proxy_redirect      off;</code></pre><p>可以看到这时候的location后面先不跟任何东西，再来看8080后面有/和没有/</p>
+<p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211025223545531.png" alt="image-20211025223545531"></p>
+<p>配置1：当我们访问ashupup.top/test.xml    代理后就变成  127.0.0.1/test.xml</p>
+<p>配置2：当我们访问ashupup.top/test.xml    代理后就变成 127.0.0.1/test.xml  </p>
+<p>可以看到没有区别还是一样的</p>
+<h4 id="情况二"><a href="#情况二" class="headerlink" title="情况二"></a>情况二</h4><p>但是当location后面变成/qq/</p>
+<pre><code>location /qq/ {
+                proxy_pass http://127.0.0.1:8080/;  #配置1
+                proxy_pass http://127.0.0.1:8080;    #配置2
+                proxy_redirect      off;</code></pre><p>配置1：当我们访问ashupup.top/qq/test.xml    代理后就变成  127.0.0.1/test.xml</p>
+<p>配置2：当我们访问ashupup.top/qq/test.xml    代理后就变成 127.0.0.1/qq/test.xml  </p>
+<h4 id="情况三"><a href="#情况三" class="headerlink" title="情况三"></a>情况三</h4><pre><code>location / {
+                proxy_pass http://127.0.0.1:8080/yyy;  配置1
+                proxy_redirect      off;
 
-tar zxvf frp_0.34.3_linux_amd64.tar.gz</code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211022134507190.png" alt="image-20211022134507190"></p>
-<p>改个名字方便一点</p>
-<p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211022134620379.png" alt="image-20211022134620379"></p>
-<p>因为我们的vps作为服务端，所以还需要把客户端的东西删除</p>
-<pre><code>rm frpc
 
-rm frpc.ini</code></pre><p>删除完了打开服务端的配置文件frps.ini</p>
-<p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211022135059404.png" alt="image-20211022135059404"></p>
-<p>虽然里面只有这但是可以配置一下这些内容的</p>
-<pre><code>bind_addr = 0.0.0.0 #绑定的ip，为本机
+location /qq/ {
+                proxy_pass http://127.0.0.1:8080/yyy;  #配置2</code></pre><p>配置1：当我们ashupup.top/xxx的时候  代理后就会变成127.0.0.1:8080/yyyxxx   而不是127.0.0.1:8080/xxx</p>
+<p>配置2：当我们ashupup.top/qq/xxx的时候   代理后就变成127.0.0.1:8080/yyyxxx</p>
+<h4 id="情况四"><a href="#情况四" class="headerlink" title="情况四"></a>情况四</h4><pre><code>location / {
+                proxy_pass http://127.0.0.1:8080/yyy/;  配置1
+                proxy_redirect      off;
 
-bind_port = 7000 #绑定的端口
 
-dashboard_addr = 0.0.0.0 #管理地址
+location /qq/ {
+                proxy_pass http://127.0.0.1:8080/yyy/;  #配置2</code></pre><p>配置1：当我们ashupup.top/xxx的时候  代理后就会变成127.0.0.1:8080/yyy/xxx</p>
+<p>配置2：当我们ashupup.top/qq/xxx的时候   代理后就变成127.0.0.1:8080/yyy/xxx</p>
+<h3 id="回归正题"><a href="#回归正题" class="headerlink" title="回归正题"></a>回归正题</h3><pre><code>allow 192.168.100.0/30;#允许ip段，all为所有 这里允许访问的IP范围为：192.168.100.1～192.168.100.3</code></pre><p>在这设置了白名单，正因为如此，那么当我们不在白名单范围的ip地址，就会出现403</p>
+<p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211026215811321.png" alt="image-20211026215811321"></p>
+<pre><code>- X-Originating-IP: 127.0.0.1
+- X-Remote-IP: 127.0.0.1
+- X-Client-IP: 127.0.0.1
+- X-Forwarded-For: 127.0.0.1
+- X-Forwared-Host: 127.0.0.1
+- X-Host: 127.0.0.1
+- X-Custom-IP-Authorization: 127.0.0.1</code></pre><p>一般在邮件的位置，查看源文件可以看到 X-Originating-IP   泄露了发件人的真实ip地址</p>
+<p><img src="/images/loading.gif" data-original="C:%5CUsers%5C77960%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20211026221611144.png" alt="image-20211026221611144"></p>
+<p>remote_addr代表客户端的IP，但它的值不是由客户端提供的，而是服务端根据客户端的ip指定的，当你的浏览器访问某个网站时，假设中间没有任何代理，那么网站的web<a href="https://www.baidu.com/s?wd=服务器&amp;tn=24004469_oem_dg&amp;rsv_dl=gh_pl_sl_csd" target="_blank" rel="noopener">服务器</a>（<a href="https://www.baidu.com/s?wd=Nginx&amp;tn=24004469_oem_dg&amp;rsv_dl=gh_pl_sl_csd" target="_blank" rel="noopener">Nginx</a>，Apache等）就会把remote_addr设为你的机器IP，如果你用了某个代理，那么你的浏览器会先访问这个代理，然后再由这个代理转发到网站，这样web服务器就会把remote_addr设为这台代理机器的IP</p>
+<p>XFF头（X-Forwarded-For），它代表客户端，也就是HTTP的请求端真实的IP，只有在通过了<strong>HTTP 代理或者负载均衡服务器</strong>时才会添加该项，正如上面所述,当你使用了代理时,web服务器就不知道你的真实IP了,为了避免这个情况,代理服务器通常会增加一个叫做x_forwarded_for的头信息,把连接它的客户端IP(即你的上网机器IP)加到这个头信息里,这样就能保证网站的web服务器能获取到真实IP</p>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><pre><code>请求
+GET /login HTTP/1.1
+回包
+HTTP/1.1 403 Forbidden</code></pre><p>绕过</p>
+<pre><code>GET /login HTTP/1.1
+X-Forwarded-For: 127.0.0.1
 
-dashboard_port = 7500 #管理端口  这里端口是我们访问图形化界面时候用到的
+HTTP/1.1 200 OK
 
-dashboard_user = root #管理的用户名
+GET / HTTP/1.1
+X-Forwarded-For: /login
 
-dashboard_pwd = ash #管理用户的密码
+HTTP/1.1 200 OK</code></pre><h4 id="实例一"><a href="#实例一" class="headerlink" title="实例一"></a>实例一</h4><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211026223759144.png" alt="image-20211026223759144"></p>
+<p>因为只允许本地，那么就会想到127.0.0.1  再去上面添加XFF头就能绕过</p>
+<p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211026223853656.png" alt="image-20211026223853656"></p>
+<p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211026223907776.png" alt="image-20211026223907776"></p>
+<p>在Replace里面添加X-Forwarded-For：127.0.0.1  添加之后每次请求中，请求包中都会添加一个XFF头</p>
+<p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211026224012211.png" alt="image-20211026224012211"></p>
+<p>发包过去<img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211026224051650.png" alt="image-20211026224051650"></p>
+<h2 id="三-覆盖请求URL"><a href="#三-覆盖请求URL" class="headerlink" title="三.覆盖请求URL"></a>三.覆盖请求URL</h2><p>在前面的代理绕过的时候看到X-Originating-IP: 127.0.0.1   如果不小心还会看成了X-Original-URL</p>
+<pre><code>Request
+  GET /login HTTP/1.1
+  Response
+  HTTP/1.1 403 Forbidden
 
-token = ashupup #客户端服务端连接的密码
+  Reqeust
+  GET / HTTP/1.1
+  X-Original-URL: /login
+  Response
+  HTTP/1.1 200 OK
 
-heartbeat_timeout = 90 #心跳超时时间
+  or
 
-max_pool_count = 5 #最大同时连接数
+  Reqeust
+  GET / HTTP/1.1
+  X-Rewrite-URL: /login
+  Response
+  HTTP/1.1 200 OK</code></pre><p>burp学院的绕过基于URL的访问控制</p>
+<p>这关使用X-Originating-IP绕过</p>
+<p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211027220018280.png" alt="image-20211027220018280"></p>
+<p>X-Originating-IP: /admin</p>
+<p>抓包放到repeter里面</p>
+<p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211027220305138.png" alt="image-20211027220305138"></p>
+<p>可以看到是403</p>
+<p>添加X-Originating-IP: /admin头</p>
+<p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211027220340608.png" alt="image-20211027220340608"></p>
+<p>发现还是403，但是删除请求头里面的/admin</p>
+<p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211027220428132.png" alt="image-20211027220428132"></p>
+<p>成功200绕过</p>
+<h2 id="四-Referer标头绕过"><a href="#四-Referer标头绕过" class="headerlink" title="四.Referer标头绕过"></a>四.Referer标头绕过</h2><p>像referer头一般就会想到CSRF和Jsonp跨域漏洞，因为都跟这个referer头有关</p>
+<p>而Referer头的意思就是请求源的地址，也就是告诉服务器我是从哪个页面链接过来的</p>
+<p>还有一个origin 它跟referer都是代表来自哪里，但是origin一般用于跨域的时候，表示来自哪个域</p>
+<p>比如访问某个IP地址的test.txt文件</p>
+<pre><code>origin：http://x.x.x.x
 
-vhost_http_port = 10080 
+referer：http://x.x.x.x/test.txt</code></pre><p>常见方式</p>
+<pre><code>Request
+GET /auth/login HTTP/1.1
+Host: xxx
+Response
+HTTP/1.1 403 Forbidden
 
-vhost_https_port = 10443  #vhost_http_port”和“vhost_https_port”用于反向代理HTTP主机时使用</code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211022135510307.png" alt="image-20211022135510307"></p>
-<p>linux环境下执行</p>
-<pre><code>./frps -c frps.ini</code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211022135619781.png" alt="image-20211022135619781"></p>
-<p>windows下面执行</p>
-<pre><code>frps.exe -c frps.ini</code></pre><p>然后访问  ip:7500</p>
-<p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211022165327395.png" alt="image-20211022165327395"></p>
-<h3 id="客户端配置"><a href="#客户端配置" class="headerlink" title="客户端配置"></a>客户端配置</h3><p>通过上传frp</p>
-<p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211022165621516.png" alt="image-20211022165621516"></p>
-<p>修改客户端</p>
-<p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211022170743438.png" alt="image-20211022170743438"></p>
-<pre><code>[common]
-server_addr = vps地址
-server_port = 7000 //服务器绑定的端口
-token = ashupup //服务端中是指的密码
-[web] //服务器名，随便取ssh，rdp都行
-type = tcp #连接协议类型
-local_ip = 127.0.0.1 #访问的ip可以是内网任何一个ip
-local_port = 3389 #本地端口（根据协议修改）
-remote_port = 6000 #远程服务器的ip端口
-plugin = socks5               #使用的协议
-use_encryption = true         #是否加密
-use_compression = true</code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211024153956926.png" alt="image-20211024153956926"></p>
-<p>设置完之后启动</p>
-<pre><code>frpc.exe -c frpc.ini</code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211022174142672.png" alt="image-20211022174142672"></p>
-<p>回到界面可以看到，已经回弹了一个</p>
-<p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211022174306056.png" alt="image-20211022174306056"></p>
-<p>然后打开mstsc<img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211022174441123.png" alt="image-20211022174441123"></p>
-<p>或者设置个代理</p>
-<p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211024124054212.png" alt="image-20211024124054212"></p>
-<h2 id="二级代理"><a href="#二级代理" class="headerlink" title="二级代理"></a>二级代理</h2><p>环境搭建</p>
-<pre><code>kali    192.168.1.132            通
-vps
+Reqeust
+GET / HTTP/1.1
+Host: xxx
+ReFerer:https://xxx/auth/login
+Response
+HTTP/1.1 200 OK</code></pre><h3 id="基于Referer头的访问控制"><a href="#基于Referer头的访问控制" class="headerlink" title="基于Referer头的访问控制"></a><strong>基于Referer头的访问控制</strong></h3><p>burp学院的实验题目</p>
+<p>登录administrator账号密码admin     </p>
+<p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211027212557762.png" alt="image-20211027212557762"></p>
+<p>把carlos提权，并进行抓包</p>
+<p><img src="/images/loading.gif" data-original="C:%5CUsers%5C77960%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20211027212700151.png" alt="image-20211027212700151"></p>
+<p>放到repeater里面,把referer复制下来</p>
+<p>退出使用wiener登录,抓取session，替换掉原来管理员的session</p>
+<p>回到刚才repeater的地方</p>
+<p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211027214152802.png" alt="image-20211027214152802"></p>
+<p>发包查看</p>
+<p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211027214247023.png" alt="image-20211027214247023"></p>
+<p>出现Unauthorized  没有认证，仔细看里面的referer我删除了</p>
+<p>添加referer头</p>
+<p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211027214319989.png" alt="image-20211027214319989"></p>
+<p>出现302成功绕过，而这个referer头是登录管理员后的referer头</p>
+<h2 id="五，修改请求方法POST-GET绕过"><a href="#五，修改请求方法POST-GET绕过" class="headerlink" title="五，修改请求方法POST GET绕过"></a>五，修改请求方法POST GET绕过</h2><p>在burp学院的题目</p>
+<p>首先登录管理员账户，提升carlos的权限，并且抓包，放到repeater里面去。</p>
+<p>，然后退出登录普通用户，抓取session</p>
+<p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211028154521425.png" alt="image-20211028154521425"></p>
+<p>然后在请求方式的地方，把POST改成POSTX</p>
+<p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211028154551515.png" alt="image-20211028154551515"></p>
+<p>提示缺少url参数username</p>
+<p>那尝试改成get类型</p>
+<p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211028154650202.png" alt="image-20211028154650202"></p>
+<p>出现302绕过</p>
+<h2 id="六-修改HOST"><a href="#六-修改HOST" class="headerlink" title="六.修改HOST"></a>六.修改HOST</h2><p>什么是host：指定请求服务器的域名/IP地址和端口号。或者当几个网站都部署在了一个服务器上面的时候，可以通过host头来判断请求。也就是说当很多域名都部署在了一个ip地址上面的时候，网站会通过host头来判断当前请求的地方，而对于host头是可以被用户控制的，只要存在控制修改，就有可能存在问题。</p>
+<p>因为没有实例图，但是具体方法就是收集子域名，整理好之后通过burp的暴力破解模块来绕过</p>
+<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><p>插件安装：<a href="https://github.com/sting8k/BurpSuite_403Bypasser" target="_blank" rel="noopener">https://github.com/sting8k/BurpSuite_403Bypasser</a></p>
+<p>下载插件</p>
+<pre><code>git clone https://github.com/sting8k/BurpSuite_403Bypasser.git</code></pre><pre><code>BurpSuite -&gt; Extender -&gt; Extensions -&gt; Add -&gt; Extension Type: Python -&gt; Select file: 403bypasser.py -&gt; Next till Finish</code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211028163940305.png" alt="image-20211028163940305"></p>
+<p>python编写的脚本：<a href="https://github.com/lobuhi/byp4xx" target="_blank" rel="noopener">https://github.com/lobuhi/byp4xx</a></p>
+<p>使用方法</p>
+<pre><code>git clone https://github.com/lobuhi/byp4xx.git
 
-win7-1  192.168.1.122        通外网
-        192.168.100.130      不通外网 
+cd byp4xx
 
-win7-2    192.168.100.129        不通外网
-        192.168.93.130            不通
+chmod u+x byp4xx.sh
 
-windows2008  192.168.93.129     不通</code></pre><h3 id="vps配置"><a href="#vps配置" class="headerlink" title="vps配置"></a>vps配置</h3><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211024155430957.png" alt="image-20211024155430957"></p>
-<p>跟一级代理没有变，跟客户端绑定的端口还是7000，访问页面的端口还是7500</p>
-<h3 id="win7-1配置"><a href="#win7-1配置" class="headerlink" title="win7-1配置"></a>win7-1配置</h3><p>配置frp的客户端fprs</p>
-<p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211024165742566.png" alt="image-20211024165742566"></p>
-<p>回到kali配置代理</p>
-<pre><code>vi /etc/proxychains.conf</code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211024171000097.png" alt="image-20211024171000097"></p>
-<p>扫描一下100的地址</p>
-<pre><code>proxychains nmap -sT -Pn -p 3389 -T4 192.168.100.129</code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211024172913473.png" alt="image-20211024172913473"></p>
-<p>接下来设置socks5访问到93网段的</p>
-<p>回到win7-1配置frps的服务端</p>
-<p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211024173229917.png" alt="image-20211024173229917"></p>
-<p>别的内容可以自己添加</p>
-<p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211024182228675.png" alt="image-20211024182228675"></p>
-<h3 id="win7-2配置"><a href="#win7-2配置" class="headerlink" title="win7-2配置"></a>win7-2配置</h3><p>来到win7-2的位置配置客户端</p>
-<pre><code>
-[common]
-server_addr = 192.168.100.130 
-server_port = 7000
-[socks5]
-type = tcp
-remote_port = 8888
-plugin = socks5
-use_encryption = true
-use_compression = true
-</code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211024182343907.png" alt="image-20211024182343907"></p>
-<p>回到kali配置proxychains</p>
-<p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211024182444884.png" alt="image-20211024182444884"></p>
-<h3 id="扫描2008的445端口"><a href="#扫描2008的445端口" class="headerlink" title="扫描2008的445端口"></a>扫描2008的445端口</h3><pre><code>proxychains nmap -sT -Pn -p 445 -T4 192.168.93.129</code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211024204936798.png" alt=""></p>
-<p>总结：</p>
-<p>因为内网资源无法访问，需要把内网服务器作为跳板，从而访问内网的资源。首先在win7-1的位置作为客户端，模拟一级代理，映射到vps的6000的端口，然后就能访问100网段。这时候把现在win7-1跳板机作为frp服务器，把win7-2作为跳板机，搭建代理访问win2008</p>
-<p>win7-1 映射到vps的6000端口</p>
-<p>win7-2 映射到win7-1的8888端口</p>
-<h2 id="三级代理"><a href="#三级代理" class="headerlink" title="三级代理"></a>三级代理</h2><p>三级代理和二级一样，只是多加了一个内网网段</p>
-<pre><code>kali    192.168.1.132            通
-vps
-
-win7-1  192.168.1.122        通外网
-        192.168.100.130      不通外网 
-
-win7-2    192.168.100.129        不通外网
-        192.168.93.130            不通
-
-windows2008  192.168.93.129     不通
-            192.168.114.128  不通
-ubuntu 192.168.114.129   不通
-</code></pre><p>同样的道理，前面的步骤都是一样的</p>
-<h3 id="win7-2开启服务端"><a href="#win7-2开启服务端" class="headerlink" title="win7-2开启服务端"></a>win7-2开启服务端</h3><p><img src="/images/loading.gif" data-original="C:%5CUsers%5C77960%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20211024205210395.png" alt="image-20211024205210395"></p>
-<h3 id="2008配置"><a href="#2008配置" class="headerlink" title="2008配置"></a>2008配置</h3><p>在2008开启一个客户端</p>
-<p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211024205251572.png" alt="image-20211024205251572"></p>
-<p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211024205142101.png" alt="image-20211024205142101"></p>
-<p>回到kali设置代理</p>
-<p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211024205402407.png" alt="image-20211024205402407"></p>
-<p>扫一下ubuntu的22端口</p>
-<p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211024210129301.png" alt="image-20211024210129301"></p>
-<p>可以看到3层代理</p>
-<h2 id="无需配置跟参数版本"><a href="#无需配置跟参数版本" class="headerlink" title="无需配置跟参数版本"></a>无需配置跟参数版本</h2><p>下载地址：<a href="https://github.com/uknowsec/frpModify" target="_blank" rel="noopener">https://github.com/uknowsec/frpModify</a></p>
-<p>上传文件，还要给frps_linux_amd64加可执行权限</p>
-<pre><code>chmod u+x frps_linux_amd64</code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211024223034179.png" alt="image-20211024223034179"></p>
-<pre><code>./frps -h  //查看参数</code></pre><p>为了方便我把frps_linux_amd64改成frps</p>
-<p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211024230446896.png" alt="image-20211024230446896"></p>
-<p>在win7上传客户端</p>
-<pre><code>frpc.exe -t VPSIP -p 7000</code></pre><p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211024230513728.png" alt="image-20211024230513728"></p>
-<p>无配置文件里面的映射的端口默认是23333</p>
-<p><img src="/images/loading.gif" data-original="https://ashupup.oss-cn-beijing.aliyuncs.com/img/image-20211024230817089.png" alt="image-20211024230817089"></p>
-<blockquote>
-<p>思考：<br>当遇到Nginx反向代理，内网比如80端口映射到Nginx的8080端口，我们访问的只是映射的ip地址加端口，并不是真实的内网ip地址。</p>
-<p>但是当我们拿到web的shell（这个shell是内网web服务器的shell，不是Nginx的shell）之后，进入了内网，但是呢我们外网只能访问8080端口也就是内网的80端口。所以这时候就需要我们搭建隧道，比如frp，这样就能访问别的端口，不然不能访问，因为这个内网web服务器是没有公网的ip地址。然后本地SocksCap、Proxifier代理以方便我们使用别的工具进行渗透</p>
-</blockquote>
-<p>参考链接：<br><a href="https://www.cnblogs.com/sunny11/p/14264293.html" target="_blank" rel="noopener">https://www.cnblogs.com/sunny11/p/14264293.html</a></p>
-<p><a href="https://www.freebuf.com/sectool/280226.html" target="_blank" rel="noopener">https://www.freebuf.com/sectool/280226.html</a></p>
-<p><a href="https://sec-in.com/article/1155" target="_blank" rel="noopener">https://sec-in.com/article/1155</a></p>
-<p><a href="https://www.secpulse.com/archives/146653.html" target="_blank" rel="noopener">https://www.secpulse.com/archives/146653.html</a></p>
+使用
+./byp4xx.sh [OPTIONS] http(s)://url/path</code></pre><p>sh脚本 ：<a href="https://github.com/Dheerajmadhukar/4-ZERO-3" target="_blank" rel="noopener">https://github.com/Dheerajmadhukar/4-ZERO-3</a></p>
+<pre><code>$ bash 403-bypass.sh https://target.com/secret</code></pre><p><a href="https://juejin.cn/post/6859253589018148871" target="_blank" rel="noopener">https://juejin.cn/post/6859253589018148871</a></p>
+<p><a href="https://dm116.github.io/2020/01/28/Bypass-HTTP-Basic-Authentication-with-Nmap-and-Metasploit/" target="_blank" rel="noopener">https://dm116.github.io/2020/01/28/Bypass-HTTP-Basic-Authentication-with-Nmap-and-Metasploit/</a></p>
+<p><a href="https://mp.weixin.qq.com/s/gUIEGzZdMfYHYlrST8R4Ow" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/gUIEGzZdMfYHYlrST8R4Ow</a></p>
+<p><a href="https://lw0f.fun/2021/01/17/403%E7%BB%95%E8%BF%87%E5%B0%8F%E7%BB%93/" target="_blank" rel="noopener">https://lw0f.fun/2021/01/17/403%E7%BB%95%E8%BF%87%E5%B0%8F%E7%BB%93/</a></p>
+<p><a href="https://www.codeleading.com/article/92285937634/#URI_1" target="_blank" rel="noopener">https://www.codeleading.com/article/92285937634/#URI_1</a></p>
+<p><a href="https://mp.weixin.qq.com/s/_hcVp9u7OIHnYW1l7lQiCQ" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/_hcVp9u7OIHnYW1l7lQiCQ</a></p>
 
             </div>
             <hr />
@@ -885,9 +923,9 @@ ubuntu 192.168.114.129   不通
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《隧道搭建frp》
+                    《bypass403总结》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/posts/3378.html" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/posts/2d8.html" property="cc:attributionName"
                rel="cc:attributionURL">
                 Ash
             </a> 采用
@@ -928,7 +966,7 @@ ubuntu 192.168.114.129   不通
         repo: 'ashupup.github.io',
         owner: 'ashupup',
         admin: "ashupup",
-        id: 'posts/3378.html',
+        id: 'posts/2d8.html',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -1211,9 +1249,63 @@ ubuntu 192.168.114.129   不通
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/posts/2d8.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/images/loading.gif" data-original="/medias/featureimages/14.jpg" class="responsive-img" alt="bypass403总结">
+                        
+                        <span class="card-title">bypass403总结</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            bypass403对于日常渗透测试中，会经常目录扫描扫到一堆403，而对于200的状态码没有一些思路的时候就可以尝试bypass403
+一.扩展名绕过com/admin   403
+com/admin/  200
+com/admin//  
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-10-27
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/bypass/" class="post-category" target="_blank">
+                                    bypass
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/bypass/" target="_blank">
+                        <span class="chip bg-color">bypass</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/posts/10a9.html">
                     <div class="card-image">
@@ -1231,42 +1323,8 @@ ubuntu 192.168.114.129   不通
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2021-10-25
-                        </span>
-                        <span class="publish-author">
-                            
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/posts/0.html">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/images/loading.gif" data-original="/medias/featureimages/4.jpg" class="responsive-img" alt="">
-                        
-                        <span class="card-title"></span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            title: Vulnstack3靶场top: falsecover: falsetoc: truemathjax: trueabbrlink: ‘4985’date: 2021-10-25 21:25:48password:summary
-                        
-                    </div>
-                    <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-10-20
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-10-25
                             </span>
                         <span class="publish-author">
                             
